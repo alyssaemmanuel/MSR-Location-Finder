@@ -176,15 +176,12 @@
 
       const PROVIDER_NOTES = {
         'Mike Pappas, DO': [
-          { text: 'All new patients should be scheduled only with Dr. Pappas.', sub: [
-            'Patients must arrive 15–20 minutes prior to their appointment to complete the required paperwork.'
-          ] },
-          { label: 'Translation', text: 'If a patient requires translation services, they must be accompanied by a translator, except for Spanish-speaking patients, as we have Spanish translators available to assist them.' },
-          { label: 'Age Restriction', text: 'Patients must be 14 years of age or older. Patients under 18 must be accompanied by a parent or legal guardian who is 18 years of age or older.' },
-          { label: 'Appointment Intervals', text: '20-minute intervals. Double-booking is permitted when needed, except during the last 1–2 appointment slots of the day.' },
-          { text: 'No police brutality cases.' },
-          { text: 'Dr. Pappas is the only provider that is INN w/ most MM insurances.' },
-          { text: 'Fruma, the PA, may examine the established NF/Lien. She can see established WC patients as well, however, Dr. Pappas must be in the office.' },
+          { label: 'New Patients', text: 'Dr. Pappas only; arrive 15–20 min early.' },
+          { label: 'Age', text: '14+ only. Under 18 requires parent/legal guardian.' },
+          { label: 'Translation', text: 'Patient must bring translator; Spanish available in-office.' },
+          { label: 'Scheduling', text: '20-min intervals; double-booking allowed except last 1–2 slots of day.' },
+          { label: 'Major Medical', text: 'Dr. Pappas is the only provider INN with most MM plans.' },
+          { label: 'Do Not Schedule', text: 'Police brutality cases.' },
         ],
       };
 
