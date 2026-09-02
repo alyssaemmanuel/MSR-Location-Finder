@@ -549,7 +549,7 @@
                       <div class="split-col">
                         <span class="split-col-title">CONTACT INFORMATION</span>
                         <div class="split-row">
-                          <b>Appointment Requests:</b><br>
+                          <b>For help with appointment requests call main line:</b><br>
                           <a href="tel:${office.phone.replace(/\D/g, '')}">${phoneClean}</a>
                           ${office.directPhone ? `<br><a href="tel:${office.directPhone.replace(/\D/g, '')}">${directClean}</a>` : ''}
                         </div>
