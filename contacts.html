@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MSR Contact Lookup | Clinical Directory</title>
+  <meta name="description" content="Search approved contacts by name, company, or phone number.">
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, noimageindex">
+
+  <!-- 4-Quadrant vector favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='none'/%3E%3Crect x='12' y='12' width='82' height='82' rx='28' fill='%232296f3'/%3E%3Crect x='118' y='12' width='58' height='58' rx='20' fill='%230179bf'/%3E%3Crect x='12' y='118' width='58' height='58' rx='20' fill='%230179bf'/%3E%3Crect x='94' y='94' width='82' height='82' rx='28' fill='%235fc4ff'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="MSR Pain and Injury home">
+        <span class="brand-logo">
+          <img src="https://msr-location-finder.vercel.app/msr-logo.png" alt="Musculoskeletal Resources Injury Doctors" onerror="this.onerror=null; this.src='/msr-logo.png';">
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="index.html">Location Lookup</a>
+        <a href="contacts.html" class="active">Contact Lookup</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-inner contacts-hero-inner">
+        <div class="hero-left">
+          <div class="hero-badge-kicker"><span></span> Approved Contact Directory</div>
+          <h1>Contact Lookup</h1>
+          <p>Search approved contacts by name, company, or phone number &mdash; attorneys, referral sources, and other approved outside contacts.</p>
+
+          <form class="zip-search" id="contact-search-form" aria-label="Search approved contacts">
+            <div class="zip-search-console">
+              <div class="search-input-wrap">
+                <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input id="contact-search" name="contact-search" maxlength="180" value="" placeholder="Search by name, company, or phone number" aria-label="Search by name, company, or phone number">
+              </div>
+              <button type="submit">Search &rarr;</button>
+            </div>
+            <p class="privacy-note" id="contact-search-note">Leaving search blank shows all approved contacts.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="finder" id="finder" aria-labelledby="finder-title">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker" id="section-kicker">APPROVED CONTACTS</span>
+          <h2 id="finder-title"><span id="finder-title-text">All Contacts</span></h2>
+        </div>
+        <p role="status" aria-live="polite"><i></i><span id="results-status">Loading contacts&hellip;</span></p>
+      </div>
+
+      <ol class="contact-list" id="contact-list" aria-label="Approved contacts list"></ol>
+    </section>
+
+    <footer>
+      <a class="brand footer-brand" href="index.html">
+        <span class="brand-logo">
+          <img src="https://msr-location-finder.vercel.app/msr-logo.png" alt="Musculoskeletal Resources Injury Doctors" onerror="this.onerror=null; this.src='/msr-logo.png';">
+        </span>
+      </a>
+      <p>Internal clinical and routing reference tool for MSR team members. Contact information reflects the verified MSR directory.</p>
+      <p class="footer-meta">No patient data is stored. &copy; 2026 Musculoskeletal Resources</p>
+    </footer>
+  </main>
+
+  <script src="/contacts.js"></script>
+</body>
+</html>
