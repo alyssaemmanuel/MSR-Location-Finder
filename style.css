@@ -753,6 +753,8 @@
       display: inline-block;
       margin-bottom: 1px;
     }
+    .escalation-contact { margin-top: 6px; }
+    .escalation-contact:first-child { margin-top: 0; }
     .split-row a {
       color: var(--blue);
       font-weight: 600;
@@ -838,7 +840,6 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-elevated);
       padding: 16px 18px;
-      pointer-events: none;
     }
     .provider-tooltip::before {
       content: "";
@@ -889,6 +890,13 @@
       list-style: circle;
     }
     .provider-tooltip-list ul li { color: var(--slate-600); }
+    .provider-tooltip-list a {
+      color: var(--blue);
+      font-weight: 600;
+      text-decoration: underline;
+      pointer-events: auto;
+    }
+    .provider-tooltip-list a:hover { color: var(--blue-dark); }
 
     .insurance-unavailable {
       flex-basis: 100%;

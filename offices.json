@@ -60,7 +60,12 @@
           "lon": -73.92,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Local 1199"],
           "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Albert Villafuerte, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Felix Almentero, MD (Physical Medicine & Rehabilitation)", "Rachel Schwartzman (Nurse Practitioner)", "Kimberly Quinton (Nurse Practitioner)"],
-          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
 
         {
@@ -123,7 +128,12 @@
           "lon": -73.91,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Local 1199"],
           "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Derek Johnston, MD (Pain Management)", "George Resnick, DC (Chiropractic)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Onyinyechi Chidomere, MD (Physical Medicine & Rehabilitation)", "Andrew Hsia (Nurse Practitioner)"],
-          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
         {
           "name": "Bushwick (Orthopedics)",
@@ -144,7 +154,12 @@
           "lon": -73.91,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Local 1199"],
           "providers": ["Ashley Simela, DO (Spine)", "Derek Johnston, MD (Pain Management)", "Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "George Resnick, DC (Chiropractic)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Onyinyechi Chidomere, MD (Physical Medicine & Rehabilitation)"],
-          "services": ["Orthopedics", "Sports Medicine", "Injections / Procedures"]
+          "services": ["Orthopedics", "Sports Medicine", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
         {
           "name": "Canarsie",
@@ -164,7 +179,12 @@
           "lat": 40.62,
           "lon": -73.92,
           "providers": ["Ashley Simela, DO (Spine)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Yolande Bernard, MD (Physical Medicine & Rehabilitation)"],
-          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
         {
           "name": "Flatbush",
@@ -205,7 +225,12 @@
           "lat": 40.65,
           "lon": -74.01,
           "providers": ["Ashley Simela, DO (Spine)", "Shouhei Yamagami, MD (Physical Medicine & Rehabilitation)", "Thomas Mathew, MD (Physical Medicine & Rehabilitation)"],
-          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
 
         {
@@ -268,7 +293,12 @@
           "lon": -73.62,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Emblem Health", "Fidelis", "Medicare", "One Call", "UnitedHealthcare"],
           "providers": ["Ashley Simela, DO (Spine)", "Lauren Bartels Marzuillo, DO (Physical Medicine & Rehabilitation)", "Silvia Geraci, MD (Pain Management)"],
-          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
         {
           "name": "Merrick",
@@ -289,7 +319,12 @@
           "lon": -73.55,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Emblem Health", "Fidelis", "One Call", "UnitedHealthcare"],
           "providers": ["Ashley Simela, DO (Spine)", "Silvia Geraci, MD (Pain Management)", "Uzoma Ukomadu, MD (Orthopedic Surgery)"],
-          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
         {
           "name": "Rockville Centre",
@@ -352,7 +387,12 @@
           "lon": -73.57,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Emblem Health", "Fidelis", "One Call", "UnitedHealthcare"],
           "providers": ["Ashley Simela, DO (Spine)", "Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Silvia Geraci, MD (Pain Management)"],
-          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
 
         {
@@ -436,7 +476,12 @@
           "lat": 40.75,
           "lon": -73.98,
           "providers": ["Ashley Simela, DO (Spine)", "Lauren Bartels Marzuillo, DO (Physical Medicine & Rehabilitation)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Thomas Mathew, MD (Physical Medicine & Rehabilitation)"],
-          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
         {
           "name": "Washington Heights",
@@ -521,7 +566,12 @@
           "lon": -73.86,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel"],
           "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Barry Katzman, MD (Orthopedic Surgery)", "Derek Johnston, MD (Pain Management)", "Yana Abayev, DO (Physical Medicine & Rehabilitation)"],
-          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
 
         {
@@ -663,7 +713,12 @@
           "lon": -74.03,
           "insurances": ["Aetna", "Amerihealth", "Cigna", "Medicare", "UnitedHealthcare"],
           "providers": ["Ashley Simela, DO (Spine)", "Seth Schran, MD (Physical Medicine & Rehabilitation)"],
-          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "Acupuncture", "EMG/NCS", "Injections / Procedures"]
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "Acupuncture", "EMG/NCS", "Injections / Procedures"],
+          "escalationContacts": [
+            { "name": "Peyton", "email": "Pheron@healthplusmgmt.com", "phone": "718.701.6099" },
+            { "name": "Yonmairy", "email": "yhernandez@healthplusmgmt.com", "phone": "718.763.6687" },
+            { "name": "Chelsea", "email": "Cherrera@healthplusmgmt.com", "phone": "212.682.5800" }
+          ]
         },
         {
           "name": "Teaneck",

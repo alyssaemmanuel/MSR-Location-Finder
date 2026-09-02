@@ -149,6 +149,23 @@
         return phoneStr;
       };
 
+      const renderEscalation = (office) => {
+        if (office.escalationContacts && office.escalationContacts.length) {
+          return office.escalationContacts.map(c => `
+            <div class="escalation-contact">
+              <span>${c.name}:</span><br>
+              ${c.phone ? `<a href="tel:${c.phone.replace(/\D/g, '')}">${formatPhone(c.phone)}</a>` : ''}
+              ${c.email ? `<br><a href="mailto:${c.email}">${c.email}</a>` : ''}
+            </div>
+          `).join('');
+        }
+        const escalationPhoneClean = office.escalationPhone ? formatPhone(office.escalationPhone) : '';
+        return `
+          <span>${office.escalation}:</span><br>
+          ${office.escalationPhone ? `<a href="tel:${office.escalationPhone.replace(/\D/g, '')}">${escalationPhoneClean}</a>` : ''}
+        `;
+      };
+
       const formatHours = (hoursStr) => {
         if (!hoursStr) return '';
         return hoursStr
@@ -233,21 +250,34 @@
         providerTooltip.hidden = true;
       }
 
+      let tooltipHideTimer = null;
+      function cancelTooltipHide() {
+        clearTimeout(tooltipHideTimer);
+      }
+      function scheduleTooltipHide() {
+        cancelTooltipHide();
+        tooltipHideTimer = setTimeout(() => {
+          if (!providerTooltip.matches(':hover')) hideProviderTooltip();
+        }, 150);
+      }
+
       document.addEventListener('mouseover', (e) => {
         const tag = e.target.closest('.provider-tag-has-notes');
-        if (tag) showProviderTooltip(tag);
+        if (tag) { cancelTooltipHide(); showProviderTooltip(tag); }
       });
       document.addEventListener('mouseout', (e) => {
         const tag = e.target.closest('.provider-tag-has-notes');
-        if (tag && !tag.contains(e.relatedTarget)) hideProviderTooltip();
+        if (tag && !tag.contains(e.relatedTarget)) scheduleTooltipHide();
       });
+      providerTooltip.addEventListener('mouseenter', cancelTooltipHide);
+      providerTooltip.addEventListener('mouseleave', scheduleTooltipHide);
       document.addEventListener('focusin', (e) => {
         const tag = e.target.closest('.provider-tag-has-notes');
-        if (tag) showProviderTooltip(tag);
+        if (tag) { cancelTooltipHide(); showProviderTooltip(tag); }
       });
       document.addEventListener('focusout', (e) => {
         const tag = e.target.closest('.provider-tag-has-notes');
-        if (tag) hideProviderTooltip();
+        if (tag) scheduleTooltipHide();
       });
 
       const gmbUrl = (office, origin = currentSearch) => {
@@ -648,7 +678,6 @@
             const formattedHours = formatHours(office.hours);
             const phoneClean = formatPhone(office.phone);
             const directClean = office.directPhone ? formatPhone(office.directPhone) : '';
-            const escalationPhone = office.escalationPhone ? formatPhone(office.escalationPhone) : '';
 
             return `
               <li data-index="${idx}" class="${idx === 0 ? 'active' : ''}">
@@ -684,8 +713,7 @@
                         </div>
                         <div class="split-row">
                           <b>Non-Appointment Requests:</b><br>
-                          <span>${office.escalation}:</span><br>
-                          ${office.escalationPhone ? `<a href="tel:${office.escalationPhone.replace(/\D/g, '')}">${escalationPhone}</a>` : ''}
+                          ${renderEscalation(office)}
                         </div>
                       </div>
                     </div>
