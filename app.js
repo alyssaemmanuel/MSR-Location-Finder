@@ -65,14 +65,14 @@
       let originMarker = null;
       let originHalo = null;
 
-      const defaultPinIcon = L.divIcon({
+      const makeDefaultPinIcon = (number) => L.divIcon({
         className: 'custom-office-pin',
         html: `
           <svg width="26" height="34" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 2px 4px rgba(15, 23, 42, 0.25)); cursor: pointer;">
             <path d="M13 0C5.82 0 0 5.82 0 13C0 22.75 13 34 13 34C13 34 26 22.75 26 13C26 5.82 20.18 0 13 0Z" fill="#0179bf"/>
             <path d="M13 1.5C6.65 1.5 1.5 6.65 1.5 13C1.5 21.6 13 31.8 13 31.8C13 31.8 24.5 21.6 24.5 13C24.5 6.65 19.35 1.5 13 1.5Z" fill="#005a8f"/>
-            <circle cx="13" cy="13" r="5" fill="#FFFFFF"/>
-            <circle cx="13" cy="13" r="2.5" fill="#0179bf"/>
+            <circle cx="13" cy="13" r="7.5" fill="#FFFFFF"/>
+            <text x="13" y="13" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="8.5" font-weight="800" fill="#0179bf">${number}</text>
           </svg>
         `,
         iconSize: [26, 34],
@@ -80,14 +80,14 @@
         popupAnchor: [0, -32]
       });
 
-      const activePinIcon = L.divIcon({
+      const makeActivePinIcon = (number) => L.divIcon({
         className: 'custom-active-pin',
         html: `
           <svg width="34" height="44" viewBox="0 0 34 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 4px 8px rgba(1, 121, 191, 0.4)); cursor: pointer;">
             <path d="M17 0C7.6 0 0 7.6 0 17C0 29.8 17 44 17 44C17 44 34 29.8 34 17C34 7.6 26.4 0 17 0Z" fill="#0179bf"/>
             <path d="M17 2C8.7 2 2 8.7 2 17C2 28.2 17 41.5 17 41.5C17 41.5 32 28.2 32 17C32 8.7 25.3 2 17 2Z" fill="#004670"/>
-            <circle cx="17" cy="17" r="7" fill="#FFFFFF"/>
-            <circle cx="17" cy="17" r="3.5" fill="#0179bf"/>
+            <circle cx="17" cy="17" r="10" fill="#FFFFFF"/>
+            <text x="17" y="17" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="800" fill="#0179bf">${number}</text>
           </svg>
         `,
         iconSize: [34, 44],
@@ -232,11 +232,11 @@
 
         officeMarkers.forEach((m, mIdx) => {
           if (mIdx === index) {
-            m.setIcon(activePinIcon);
+            m.setIcon(makeActivePinIcon(mIdx + 1));
             m.setZIndexOffset(1000);
             m.openPopup();
           } else {
-            m.setIcon(defaultPinIcon);
+            m.setIcon(makeDefaultPinIcon(mIdx + 1));
             m.setZIndexOffset(0);
           }
         });
@@ -422,7 +422,7 @@
 
         // Add office markers
         displayedOffices.forEach((office, idx) => {
-          const marker = L.marker([office.lat, office.lon], { icon: defaultPinIcon }).addTo(leafletMap);
+          const marker = L.marker([office.lat, office.lon], { icon: makeDefaultPinIcon(idx + 1) }).addTo(leafletMap);
           marker.bindPopup(`
             <div style="font-family: inherit; font-size: 13px;">
               <strong style="color: var(--blue); font-size: 14px;">${office.name}</strong><br>
