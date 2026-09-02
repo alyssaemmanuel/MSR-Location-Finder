@@ -157,6 +157,21 @@
           .join('<br>');
       };
 
+      const renderTagSection = (sectionId, label, items, unavailableText) => {
+        if (items && items.length) {
+          return `
+            <button type="button" class="insurance-toggle" data-target="${sectionId}" aria-expanded="false">
+              ${label} (${items.length})
+              <span class="insurance-toggle-icon" aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="insurance-tags" id="${sectionId}" hidden>
+              ${items.map(name => `<span class="insurance-tag">${name}</span>`).join('')}
+            </div>
+          `;
+        }
+        return `<span class="insurance-unavailable">${unavailableText}</span>`;
+      };
+
       const gmbUrl = (office, origin = currentSearch) => {
         if (office.gmbUrl) {
           return office.gmbUrl;
@@ -568,7 +583,7 @@
                   const allInsurances = [noFaultLabel, `Workers' Comp`, ...(office.insurances || [])];
                   return `
                 <div class="office-insurance-row">
-                  <button type="button" class="insurance-toggle" data-idx="${idx}" aria-expanded="false">
+                  <button type="button" class="insurance-toggle" data-target="insurance-tags-${idx}" aria-expanded="false">
                     Insurances Accepted (${allInsurances.length})
                     <span class="insurance-toggle-icon" aria-hidden="true">&#9662;</span>
                   </button>
@@ -576,6 +591,12 @@
                     ${allInsurances.map(name => `<span class="insurance-tag">${name}</span>`).join('')}
                     ${office.insurances && office.insurances.length ? '' : `<span class="insurance-unavailable">Other insurances unavailable for this location &mdash; call office to confirm.</span>`}
                   </div>
+                </div>
+                <div class="office-insurance-row">
+                  ${renderTagSection(`providers-tags-${idx}`, 'Providers at This Location', office.providers, 'Provider information not yet available for this location.')}
+                </div>
+                <div class="office-insurance-row">
+                  ${renderTagSection(`services-tags-${idx}`, 'Services at This Location', office.services, 'Service information not yet available for this location.')}
                 </div>
                   `;
                 })()}
@@ -615,12 +636,12 @@
           return;
         }
 
-        const insuranceToggle = event.target.closest('.insurance-toggle');
-        if (insuranceToggle) {
-          const tagsEl = document.getElementById(`insurance-tags-${insuranceToggle.dataset.idx}`);
+        const tagToggle = event.target.closest('.insurance-toggle');
+        if (tagToggle) {
+          const tagsEl = document.getElementById(tagToggle.dataset.target);
           if (tagsEl) {
             tagsEl.hidden = !tagsEl.hidden;
-            insuranceToggle.setAttribute('aria-expanded', tagsEl.hidden ? 'false' : 'true');
+            tagToggle.setAttribute('aria-expanded', tagsEl.hidden ? 'false' : 'true');
           }
           return;
         }
