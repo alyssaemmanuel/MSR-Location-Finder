@@ -379,18 +379,6 @@
       display: inline-block;
     }
 
-    .global-note {
-      background: var(--blue-surface);
-      border: 1px solid #d6e8f4;
-      border-radius: var(--radius-sm);
-      color: var(--blue-deep);
-      font-size: 12px;
-      line-height: 1.5;
-      padding: 10px 14px;
-      margin-bottom: 16px;
-    }
-    .global-note strong { font-weight: 700; }
-
     /* Tab-Bar Segmented Filters */
     .nav-tab-filters {
       background: var(--white);
@@ -623,6 +611,14 @@
       border-top: 1px solid var(--slate-100);
     }
     .active .office-insurance-row { display: block; }
+
+    .no-fault-note {
+      color: var(--blue-deep);
+      font-size: 11.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
 
     .insurance-toggle {
       display: flex;

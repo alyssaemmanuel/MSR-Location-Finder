@@ -564,6 +564,7 @@
                   ${isDistance ? `<div class="distance"><strong>${office.distance.toFixed(1)}</strong><small>miles</small></div>` : ''}
                 </button>
                 <div class="office-insurance-row">
+                  <div class="no-fault-note">No-Fault, Workers&rsquo; Comp, and attorney-represented cases are accepted at this location.</div>
                   ${office.insurances && office.insurances.length ? `
                     <button type="button" class="insurance-toggle" data-idx="${idx}" aria-expanded="false">
                       Insurances Accepted (${office.insurances.length})
