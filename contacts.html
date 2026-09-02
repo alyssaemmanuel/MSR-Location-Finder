@@ -16,32 +16,39 @@
 <body>
   <main>
     <header class="site-header">
-      <div class="brand-group">
-        <a class="brand" href="index.html" aria-label="MSR Pain and Injury home">
-          <span class="brand-logo">
-            <img src="https://msr-location-finder.vercel.app/msr-logo.png" alt="Musculoskeletal Resources Injury Doctors" onerror="this.onerror=null; this.src='/msr-logo.png';">
-          </span>
+      <div class="header-left">
+        <a class="home-icon-link" href="index.html" aria-label="Home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5 12 3l9 7.5"></path>
+            <path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"></path>
+          </svg>
         </a>
-        <span class="brand-divider" aria-hidden="true"></span>
-        <a class="brand" href="https://msrconcierge.com" target="_blank" rel="noreferrer" aria-label="MSR Concierge">
-          <span class="brand-logo brand-logo-concierge">
-            <img src="/msr-concierge-logo.png" alt="Musculoskeletal Resources Concierge">
+        <div class="brand-group">
+          <span class="brand">
+            <span class="brand-logo">
+              <img src="https://msr-location-finder.vercel.app/msr-logo.png" alt="Musculoskeletal Resources Injury Doctors" onerror="this.onerror=null; this.src='/msr-logo.png';">
+            </span>
           </span>
-        </a>
+          <span class="brand-divider" aria-hidden="true"></span>
+          <span class="brand">
+            <span class="brand-logo brand-logo-concierge">
+              <img src="/msr-concierge-logo.png" alt="Musculoskeletal Resources Concierge">
+            </span>
+          </span>
+        </div>
       </div>
 
       <nav aria-label="Primary navigation">
         <a href="index.html">Location Lookup</a>
-        <a href="contacts.html">Contact Lookup</a>
+        <a href="contacts.html" class="active">Contact Lookup</a>
       </nav>
     </header>
 
     <section class="hero" id="top">
       <div class="hero-inner contacts-hero-inner">
         <div class="hero-left">
-          <div class="hero-badge-kicker"><span></span> Approved Contact Directory</div>
           <h1>Contact Lookup</h1>
-          <p>Search approved contacts by name, company, or phone number &mdash; attorneys, referral sources, and other approved outside contacts.</p>
+          <p>Search contacts by name, company, or phone number. If the contact does not exist, please be sure to capture all details from the person you are speaking to and add it to the New Patient Intake form.</p>
 
           <form class="zip-search" id="contact-search-form" aria-label="Search approved contacts">
             <div class="zip-search-console">
@@ -63,7 +70,6 @@
     <section class="finder" id="finder" aria-labelledby="finder-title">
       <div class="section-heading">
         <div>
-          <span class="section-kicker" id="section-kicker">APPROVED CONTACTS</span>
           <h2 id="finder-title"><span id="finder-title-text">All Contacts</span></h2>
         </div>
         <p role="status" aria-live="polite"><i></i><span id="results-status">Loading contacts&hellip;</span></p>

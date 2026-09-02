@@ -10,6 +10,13 @@
 
   const MAX_RESULTS = 100;
 
+  const SALES_REPS = {
+    'Jeffrey Rubin': { phone: '(516) 993-0070', email: 'jrubin@healthplusmgmt.com' },
+    'Angela Lastihenos': { phone: '(516) 492-2884', email: 'angela@msrconcierge.com' },
+    'Johanna Galabay': { phone: '(917) 825-1393', email: 'Johanna@msrconcierge.com' },
+    'Joseph Barriga': { phone: '(516) 993-0071', email: 'jrubin@healthplusmgmt.com' },
+  };
+
   const formatPhone = (phoneStr) => {
     if (!phoneStr) return '';
     const digits = phoneStr.replace(/\D/g, '');
@@ -48,6 +55,19 @@
       return;
     }
 
+    const renderSalesRep = (name) => {
+      if (!name) return '';
+      const rep = SALES_REPS[name.trim()];
+      if (!rep) return `<div class="contact-detail"><b>MSR Sales Rep:</b> ${name}</div>`;
+      return `
+        <div class="sales-rep-block">
+          <div><b>MSR Sales Rep:</b> ${name}</div>
+          <div><b>Phone:</b> <a href="tel:${rep.phone.replace(/\D/g, '')}">${rep.phone}</a></div>
+          <div><b>Email:</b> <a href="mailto:${rep.email}">${rep.email}</a></div>
+        </div>
+      `;
+    };
+
     list.innerHTML = shown.map((c) => `
       <li class="contact-card">
         <div class="contact-main">
@@ -59,7 +79,7 @@
           ${c.phone ? `<div class="contact-detail"><b>Phone:</b> <a href="tel:${c.phone.replace(/\D/g, '')}">${formatPhone(c.phone)}</a></div>` : ''}
           ${c.email ? `<div class="contact-detail"><b>Email:</b> <a href="mailto:${c.email}">${c.email}</a></div>` : ''}
           ${(c.city || c.state) ? `<div class="contact-detail"><b>Location:</b> ${[c.city, c.state].filter(Boolean).join(', ')}${c.zip ? ' ' + c.zip : ''}</div>` : ''}
-          ${c.salesRep ? `<div class="contact-detail"><b>MSR Sales Rep:</b> ${c.salesRep}</div>` : ''}
+          ${renderSalesRep(c.salesRep)}
         </div>
       </li>
     `).join('');

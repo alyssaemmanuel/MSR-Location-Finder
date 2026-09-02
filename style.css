@@ -59,14 +59,32 @@
       position: relative;
       z-index: 100;
     }
+    .header-left { display: flex; align-items: center; gap: 14px; }
     .brand { display: inline-flex; align-items: center; }
-    .brand-logo { display: block; width: 220px; height: 56px; flex: 0 0 auto; }
-    .brand-logo img { display: block; width: 220px; height: auto; max-width: 100%; object-fit: contain; }
+    .brand-logo { display: block; height: 56px; flex: 0 0 auto; }
+    .brand-logo img { display: block; height: 56px; width: auto; max-width: 100%; object-fit: contain; }
 
     .brand-group { display: inline-flex; align-items: center; gap: 14px; }
     .brand-divider { width: 1px; height: 32px; background: var(--slate-200); flex: 0 0 auto; }
-    .brand-logo-concierge { width: 150px; height: 56px; }
-    .brand-logo-concierge img { width: 150px; height: auto; max-width: 100%; object-fit: contain; }
+    .brand-logo-concierge { height: 56px; width: auto; }
+    .brand-logo-concierge img { height: 56px; width: auto; max-width: 100%; object-fit: contain; }
+
+    .home-icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      color: var(--slate-500);
+      transition: background 0.15s ease, color 0.15s ease;
+      flex: 0 0 auto;
+    }
+    .home-icon-link:hover {
+      background: var(--slate-100);
+      color: var(--blue);
+    }
+    .home-icon-link svg { width: 18px; height: 18px; }
 
     .site-header nav {
       display: flex;
@@ -84,14 +102,11 @@
       cursor: pointer;
     }
     .site-header nav a.active,
-    .site-header nav a:first-child {
-      color: var(--blue);
-      border-bottom-color: var(--blue);
-      font-weight: 700;
-    }
     .site-header nav a:hover,
     .site-header nav a:focus-visible {
       color: var(--blue);
+      border-bottom-color: var(--blue);
+      font-weight: 700;
     }
 
     .hero {
@@ -579,6 +594,16 @@
     .contact-detail b { color: var(--slate-900); font-weight: 700; margin-right: 4px; }
     .contact-detail a { color: var(--blue); font-weight: 600; text-decoration: underline; }
     .contact-detail a:hover { color: var(--blue-dark); }
+    .sales-rep-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 12px;
+      color: #8a1e5a;
+    }
+    .sales-rep-block b { color: #8a1e5a; font-weight: 700; margin-right: 4px; }
+    .sales-rep-block a { color: #8a1e5a; font-weight: 600; text-decoration: underline; }
+    .sales-rep-block a:hover { opacity: 0.8; }
     .contact-empty {
       grid-column: 1 / -1;
       padding: 32px;

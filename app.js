@@ -214,9 +214,21 @@
       const providerNameOnly = (entry) => entry.replace(/\s*\([^)]*\)\s*$/, '').trim();
 
       function populateProviderFilter() {
+        let pool = offices;
+        if (currentSelectedState !== 'ALL') {
+          pool = pool.filter(o => o.state === currentSelectedState);
+        }
+        if (currentSelectedSubregion !== 'ALL') {
+          pool = pool.filter(o => o.region === currentSelectedSubregion);
+        }
+
         const uniqueNames = [...new Set(
-          offices.flatMap(o => (o.providers || []).map(providerNameOnly))
+          pool.flatMap(o => (o.providers || []).map(providerNameOnly))
         )].sort((a, b) => a.localeCompare(b));
+
+        if (currentSelectedProvider !== 'ALL' && !uniqueNames.includes(currentSelectedProvider)) {
+          currentSelectedProvider = 'ALL';
+        }
 
         providerFilterSelect.innerHTML = `<option value="ALL">All Providers</option>` +
           uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
@@ -236,6 +248,7 @@
         currentSelectedState = btn.dataset.state;
         currentSelectedSubregion = 'ALL';
         populateSubregionTabs();
+        populateProviderFilter();
         render(currentOrigin, currentSearch);
       });
 
@@ -245,6 +258,7 @@
         subregionTabsContainer.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentSelectedSubregion = btn.dataset.subregion;
+        populateProviderFilter();
         render(currentOrigin, currentSearch);
       });
 
@@ -684,7 +698,7 @@
           currentSelectedProvider = 'ALL';
           stateTabsContainer.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.state === 'ALL'));
           populateSubregionTabs();
-          providerFilterSelect.value = 'ALL';
+          populateProviderFilter();
           isShowAll = true;
           render(null, '');
           document.querySelector('#finder').scrollIntoView({ behavior: 'smooth' });
