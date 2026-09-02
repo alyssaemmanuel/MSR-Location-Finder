@@ -58,12 +58,13 @@
     const renderSalesRep = (name) => {
       if (!name) return '';
       const rep = SALES_REPS[name.trim()];
-      if (!rep) return `<div class="contact-detail"><b>MSR Sales Rep:</b> ${name}</div>`;
       return `
         <div class="sales-rep-block">
           <div><b>MSR Sales Rep:</b> ${name}</div>
-          <div><b>Phone:</b> <a href="tel:${rep.phone.replace(/\D/g, '')}">${rep.phone}</a></div>
-          <div><b>Email:</b> <a href="mailto:${rep.email}">${rep.email}</a></div>
+          ${rep ? `
+            <div><b>Phone:</b> <a href="tel:${rep.phone.replace(/\D/g, '')}">${rep.phone}</a></div>
+            <div><b>Email:</b> <a href="mailto:${rep.email}">${rep.email}</a></div>
+          ` : ''}
         </div>
       `;
     };

@@ -73,9 +73,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-sm);
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
       color: var(--slate-500);
       transition: background 0.15s ease, color 0.15s ease;
       flex: 0 0 auto;
@@ -84,7 +84,7 @@
       background: var(--slate-100);
       color: var(--blue);
     }
-    .home-icon-link svg { width: 18px; height: 18px; }
+    .home-icon-link svg { width: 26px; height: 26px; }
 
     .site-header nav {
       display: flex;
@@ -595,6 +595,9 @@
     .contact-detail a { color: var(--blue); font-weight: 600; text-decoration: underline; }
     .contact-detail a:hover { color: var(--blue-dark); }
     .sales-rep-block {
+      border-top: 1px solid var(--slate-100);
+      padding-top: 8px;
+      margin-top: 2px;
       display: flex;
       flex-direction: column;
       gap: 2px;
@@ -805,6 +808,87 @@
       border-radius: 999px;
       border: 1px solid var(--slate-200);
     }
+
+    .provider-tag-has-notes {
+      background: var(--blue-surface);
+      border-color: #cde3f2;
+      color: var(--blue-deep);
+      cursor: help;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .provider-tag-has-notes:hover,
+    .provider-tag-has-notes:focus-visible {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+      outline: none;
+    }
+    .provider-note-indicator { font-size: 12px; line-height: 1; }
+
+    .provider-tooltip {
+      position: absolute;
+      z-index: 5000;
+      width: 340px;
+      max-width: calc(100vw - 24px);
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-elevated);
+      padding: 16px 18px;
+      pointer-events: none;
+    }
+    .provider-tooltip::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--sky) 100%);
+    }
+    .provider-tooltip-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.2px;
+      margin-bottom: 2px;
+    }
+    .provider-tooltip-kicker {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--blue);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--slate-100);
+    }
+    .provider-tooltip-list {
+      margin: 0;
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .provider-tooltip-list li {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--slate-700);
+    }
+    .provider-tooltip-list li b { color: var(--slate-900); }
+    .provider-tooltip-list ul {
+      margin: 5px 0 0;
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: circle;
+    }
+    .provider-tooltip-list ul li { color: var(--slate-600); }
 
     .insurance-unavailable {
       flex-basis: 100%;

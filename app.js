@@ -159,7 +159,9 @@
           .join('<br>');
       };
 
-      const renderTagSection = (sectionId, label, items, unavailableText) => {
+      const defaultTagRenderer = (name) => `<span class="insurance-tag">${name}</span>`;
+
+      const renderTagSection = (sectionId, label, items, unavailableText, tagRenderer = defaultTagRenderer) => {
         const hasItems = items && items.length;
         return `
           <button type="button" class="insurance-toggle" data-target="${sectionId}" aria-expanded="false">
@@ -167,10 +169,89 @@
             <span class="insurance-toggle-icon" aria-hidden="true">&#9662;</span>
           </button>
           <div class="insurance-tags" id="${sectionId}" hidden>
-            ${hasItems ? items.map(name => `<span class="insurance-tag">${name}</span>`).join('') : `<span class="insurance-unavailable">${unavailableText}</span>`}
+            ${hasItems ? items.map(tagRenderer).join('') : `<span class="insurance-unavailable">${unavailableText}</span>`}
           </div>
         `;
       };
+
+      const PROVIDER_NOTES = {
+        'Mike Pappas, DO': [
+          { text: 'All new patients should be scheduled only with Dr. Pappas.', sub: [
+            'Patients must arrive 15–20 minutes prior to their appointment to complete the required paperwork.'
+          ] },
+          { label: 'Translation', text: 'If a patient requires translation services, they must be accompanied by a translator, except for Spanish-speaking patients, as we have Spanish translators available to assist them.' },
+          { label: 'Age Restriction', text: 'Patients must be 14 years of age or older. Patients under 18 must be accompanied by a parent or legal guardian who is 18 years of age or older.' },
+          { label: 'Appointment Intervals', text: '20-minute intervals. Double-booking is permitted when needed, except during the last 1–2 appointment slots of the day.' },
+          { text: 'No police brutality cases.' },
+          { text: 'Dr. Pappas is the only provider that is INN w/ most MM insurances.' },
+          { text: 'Fruma, the PA, may examine the established NF/Lien. She can see established WC patients as well, however, Dr. Pappas must be in the office.' },
+        ],
+      };
+
+      const providerTagRenderer = (entry) => {
+        const name = providerNameOnly(entry);
+        const notes = PROVIDER_NOTES[name];
+        if (!notes) return `<span class="insurance-tag provider-tag">${entry}</span>`;
+        return `<span class="insurance-tag provider-tag provider-tag-has-notes" data-provider="${name}" tabindex="0">${entry} <span class="provider-note-indicator" aria-hidden="true">&#9432;</span></span>`;
+      };
+
+      const renderNoteItem = (item) => `
+        <li>
+          ${item.label ? `<b>${item.label}:</b> ` : ''}${item.text}
+          ${item.sub ? `<ul>${item.sub.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
+        </li>
+      `;
+
+      const providerTooltip = document.createElement('div');
+      providerTooltip.className = 'provider-tooltip';
+      providerTooltip.hidden = true;
+      document.body.appendChild(providerTooltip);
+
+      function showProviderTooltip(target) {
+        const name = target.dataset.provider;
+        const notes = PROVIDER_NOTES[name];
+        if (!notes) return;
+        providerTooltip.innerHTML = `
+          <div class="provider-tooltip-title">${name}</div>
+          <div class="provider-tooltip-kicker">Scheduling Notes</div>
+          <ul class="provider-tooltip-list">${notes.map(renderNoteItem).join('')}</ul>
+        `;
+        providerTooltip.hidden = false;
+
+        const rect = target.getBoundingClientRect();
+        const tooltipRect = providerTooltip.getBoundingClientRect();
+        let left = rect.left + window.scrollX;
+        let top = rect.bottom + window.scrollY + 8;
+        if (left + tooltipRect.width > window.scrollX + document.documentElement.clientWidth - 12) {
+          left = window.scrollX + document.documentElement.clientWidth - tooltipRect.width - 12;
+        }
+        if (top + tooltipRect.height > window.scrollY + window.innerHeight - 12) {
+          top = rect.top + window.scrollY - tooltipRect.height - 8;
+        }
+        providerTooltip.style.left = `${Math.max(12, left)}px`;
+        providerTooltip.style.top = `${Math.max(12, top)}px`;
+      }
+
+      function hideProviderTooltip() {
+        providerTooltip.hidden = true;
+      }
+
+      document.addEventListener('mouseover', (e) => {
+        const tag = e.target.closest('.provider-tag-has-notes');
+        if (tag) showProviderTooltip(tag);
+      });
+      document.addEventListener('mouseout', (e) => {
+        const tag = e.target.closest('.provider-tag-has-notes');
+        if (tag && !tag.contains(e.relatedTarget)) hideProviderTooltip();
+      });
+      document.addEventListener('focusin', (e) => {
+        const tag = e.target.closest('.provider-tag-has-notes');
+        if (tag) showProviderTooltip(tag);
+      });
+      document.addEventListener('focusout', (e) => {
+        const tag = e.target.closest('.provider-tag-has-notes');
+        if (tag) hideProviderTooltip();
+      });
 
       const gmbUrl = (office, origin = currentSearch) => {
         if (office.gmbUrl) {
@@ -629,7 +710,7 @@
                   </div>
                 </div>
                 <div class="office-insurance-row">
-                  ${renderTagSection(`providers-tags-${idx}`, 'Providers at This Location', office.providers, 'Provider information not yet available for this location.')}
+                  ${renderTagSection(`providers-tags-${idx}`, 'Providers at This Location', office.providers, 'Provider information not yet available for this location.', providerTagRenderer)}
                 </div>
                 <div class="office-insurance-row">
                   ${renderTagSection(`services-tags-${idx}`, 'Services at This Location', office.services, 'Service information not yet available for this location.')}
