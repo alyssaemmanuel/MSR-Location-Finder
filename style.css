@@ -63,6 +63,11 @@
     .brand-logo { display: block; width: 220px; height: 56px; flex: 0 0 auto; }
     .brand-logo img { display: block; width: 220px; height: auto; max-width: 100%; object-fit: contain; }
 
+    .brand-group { display: inline-flex; align-items: center; gap: 14px; }
+    .brand-divider { width: 1px; height: 32px; background: var(--slate-200); flex: 0 0 auto; }
+    .brand-logo-concierge { width: 150px; height: 56px; }
+    .brand-logo-concierge img { width: 150px; height: auto; max-width: 100%; object-fit: contain; }
+
     .site-header nav {
       display: flex;
       align-items: center;

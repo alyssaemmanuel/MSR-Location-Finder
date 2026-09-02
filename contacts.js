@@ -59,6 +59,7 @@
           ${c.phone ? `<div class="contact-detail"><b>Phone:</b> <a href="tel:${c.phone.replace(/\D/g, '')}">${formatPhone(c.phone)}</a></div>` : ''}
           ${c.email ? `<div class="contact-detail"><b>Email:</b> <a href="mailto:${c.email}">${c.email}</a></div>` : ''}
           ${(c.city || c.state) ? `<div class="contact-detail"><b>Location:</b> ${[c.city, c.state].filter(Boolean).join(', ')}${c.zip ? ' ' + c.zip : ''}</div>` : ''}
+          ${c.salesRep ? `<div class="contact-detail"><b>MSR Sales Rep:</b> ${c.salesRep}</div>` : ''}
         </div>
       </li>
     `).join('');
