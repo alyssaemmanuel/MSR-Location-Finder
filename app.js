@@ -562,6 +562,19 @@
                   </div>
                   ${isDistance ? `<div class="distance"><strong>${office.distance.toFixed(1)}</strong><small>miles</small></div>` : ''}
                 </button>
+                <div class="office-insurance-row">
+                  ${office.insurances && office.insurances.length ? `
+                    <button type="button" class="insurance-toggle" data-idx="${idx}" aria-expanded="false">
+                      Insurances Accepted (${office.insurances.length})
+                      <span class="insurance-toggle-icon" aria-hidden="true">&#9662;</span>
+                    </button>
+                    <div class="insurance-tags" id="insurance-tags-${idx}" hidden>
+                      ${office.insurances.map(name => `<span class="insurance-tag">${name}</span>`).join('')}
+                    </div>
+                  ` : `
+                    <span class="insurance-unavailable">Insurance data unavailable for this location &mdash; call office to confirm.</span>
+                  `}
+                </div>
                 <div class="office-actions">
                   <button type="button" class="btn-confirm-appt" data-index="${idx}">Appointment Confirmation <span aria-hidden="true">&nearr;</span></button>
                   <a class="btn-learn-more" href="${office.url}" target="_blank" rel="noreferrer">Learn More About Location <span aria-hidden="true">&nearr;</span></a>
@@ -595,6 +608,16 @@
           const idx = Number(confirmBtn.dataset.index);
           const office = results[idx];
           if (office) directLaunchAppointmentEmail(office);
+          return;
+        }
+
+        const insuranceToggle = event.target.closest('.insurance-toggle');
+        if (insuranceToggle) {
+          const tagsEl = document.getElementById(`insurance-tags-${insuranceToggle.dataset.idx}`);
+          if (tagsEl) {
+            tagsEl.hidden = !tagsEl.hidden;
+            insuranceToggle.setAttribute('aria-expanded', tagsEl.hidden ? 'false' : 'true');
+          }
           return;
         }
 
