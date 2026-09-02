@@ -411,6 +411,26 @@
       gap: 6px;
       flex-wrap: wrap;
     }
+    .provider-filter-select {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      color: var(--slate-700);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      cursor: pointer;
+      min-width: 220px;
+      max-width: 100%;
+    }
+    .provider-filter-select:hover {
+      border-color: var(--slate-300);
+    }
+    .provider-filter-select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(1, 121, 191, 0.12);
+    }
     .filter-tab-btn {
       background: var(--white);
       border: 1px solid var(--slate-200);

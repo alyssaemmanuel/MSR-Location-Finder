@@ -35,6 +35,7 @@
       const distanceNote = document.querySelector('#distance-note');
       const stateTabsContainer = document.querySelector('#state-filter-tabs');
       const subregionTabsContainer = document.querySelector('#subregion-filter-tabs');
+      const providerFilterSelect = document.querySelector('#provider-filter-select');
       const legendOriginSpan = document.querySelector('#legend-search-origin');
 
       // Toast Notification
@@ -58,6 +59,7 @@
       let currentOrigin = null;
       let currentSelectedState = 'ALL';
       let currentSelectedSubregion = 'ALL';
+      let currentSelectedProvider = 'ALL';
       let isShowAll = true;
       let activeOffice = null;
       let leafletMap = null;
@@ -208,6 +210,23 @@
 
         subregionTabsContainer.innerHTML = tabsHtml;
       }
+
+      const providerNameOnly = (entry) => entry.replace(/\s*\([^)]*\)\s*$/, '').trim();
+
+      function populateProviderFilter() {
+        const uniqueNames = [...new Set(
+          offices.flatMap(o => (o.providers || []).map(providerNameOnly))
+        )].sort((a, b) => a.localeCompare(b));
+
+        providerFilterSelect.innerHTML = `<option value="ALL">All Providers</option>` +
+          uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
+        providerFilterSelect.value = currentSelectedProvider;
+      }
+
+      providerFilterSelect.addEventListener('change', () => {
+        currentSelectedProvider = providerFilterSelect.value;
+        render(currentOrigin, currentSearch);
+      });
 
       stateTabsContainer.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-state]');
@@ -471,6 +490,9 @@
         if (currentSelectedSubregion !== 'ALL') {
           pool = pool.filter(o => o.region === currentSelectedSubregion);
         }
+        if (currentSelectedProvider !== 'ALL') {
+          pool = pool.filter(o => (o.providers || []).some(p => providerNameOnly(p) === currentSelectedProvider));
+        }
 
         // 2. Compute distance if origin is provided
         if (origin && Array.isArray(origin) && origin.length === 2) {
@@ -485,7 +507,7 @@
         results = pool;
 
         // Update Section Title & Kicker
-        const isFiltered = currentSelectedState !== 'ALL' || currentSelectedSubregion !== 'ALL';
+        const isFiltered = currentSelectedState !== 'ALL' || currentSelectedSubregion !== 'ALL' || currentSelectedProvider !== 'ALL';
         if (query) {
           kicker.textContent = 'PROXIMITY SEARCH RESULTS';
           titleText.textContent = 'Offices near';
@@ -494,8 +516,8 @@
           status.textContent = `${results.length} ${results.length === 1 ? 'location' : 'locations'} sorted by distance`;
           distanceNote.style.display = 'block';
         } else if (isFiltered) {
-          kicker.textContent = 'REGIONAL DIRECTORY';
-          titleText.textContent = currentSelectedSubregion !== 'ALL' ? currentSelectedSubregion : (currentSelectedState === 'NY' ? 'New York' : currentSelectedState === 'NJ' ? 'New Jersey' : 'Connecticut');
+          kicker.textContent = currentSelectedProvider !== 'ALL' ? 'PROVIDER RESULTS' : 'REGIONAL DIRECTORY';
+          titleText.textContent = currentSelectedProvider !== 'ALL' ? currentSelectedProvider : (currentSelectedSubregion !== 'ALL' ? currentSelectedSubregion : (currentSelectedState === 'NY' ? 'New York' : currentSelectedState === 'NJ' ? 'New Jersey' : 'Connecticut'));
           searchedZip.textContent = '';
           searchedZip.style.display = 'none';
           status.textContent = `Showing ${results.length} of 47 locations`;
@@ -657,8 +679,10 @@
           note.textContent = 'Leaving search blank populates all 47 offices. Distance is calculated from searched coordinates.';
           currentSelectedState = 'ALL';
           currentSelectedSubregion = 'ALL';
+          currentSelectedProvider = 'ALL';
           stateTabsContainer.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.state === 'ALL'));
           populateSubregionTabs();
+          providerFilterSelect.value = 'ALL';
           isShowAll = true;
           render(null, '');
           document.querySelector('#finder').scrollIntoView({ behavior: 'smooth' });
@@ -715,6 +739,7 @@
           .then((data) => {
             offices = data;
             populateSubregionTabs();
+            populateProviderFilter();
             render(null, '');
           })
           .catch((err) => {

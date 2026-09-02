@@ -17,7 +17,8 @@
           "lat": 40.84,
           "lon": -73.83,
           "insurances": ["Carisk Partners", "Corvel", "One Call"],
-          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Metul Shah, MD (Pain Management)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Svetlana Trounina, MD (Physical Medicine & Rehabilitation)", "Vadim Abramov, MD (Internal Medicine)", "Evilina Abayeva (Nurse Practitioner)", "Kimberly Quinton (Nurse Practitioner)", "Rachel Schwartzman (Nurse Practitioner)"]
+          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Metul Shah, MD (Pain Management)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Svetlana Trounina, MD (Physical Medicine & Rehabilitation)", "Vadim Abramov, MD (Internal Medicine)", "Evilina Abayeva (Nurse Practitioner)", "Kimberly Quinton (Nurse Practitioner)", "Rachel Schwartzman (Nurse Practitioner)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "North Bronx",
@@ -37,7 +38,8 @@
           "lat": 40.88,
           "lon": -73.90,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Local 1199"],
-          "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Albert Villafuerte, MD (Physical Medicine & Rehabilitation)", "David Mandil, MD (Physical Medicine & Rehabilitation)", "Felix Almentero, MD (Physical Medicine & Rehabilitation)", "Matthew Kohler, MD (Pain Management)", "Sharon Malcolm-Miller (Nurse Practitioner)"]
+          "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Albert Villafuerte, MD (Physical Medicine & Rehabilitation)", "David Mandil, MD (Physical Medicine & Rehabilitation)", "Felix Almentero, MD (Physical Medicine & Rehabilitation)", "Matthew Kohler, MD (Pain Management)", "Sharon Malcolm-Miller (Nurse Practitioner)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "South Bronx",
@@ -57,7 +59,8 @@
           "lat": 40.82,
           "lon": -73.92,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Local 1199"],
-          "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Albert Villafuerte, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Felix Almentero, MD (Physical Medicine & Rehabilitation)", "Rachel Schwartzman (Nurse Practitioner)", "Kimberly Quinton (Nurse Practitioner)"]
+          "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Albert Villafuerte, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Felix Almentero, MD (Physical Medicine & Rehabilitation)", "Rachel Schwartzman (Nurse Practitioner)", "Kimberly Quinton (Nurse Practitioner)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
 
         {
@@ -77,7 +80,8 @@
           "url": "https://painandinjury.com/locations/total-body-works-medical/",
           "lat": 40.58,
           "lon": -73.95,
-          "providers": ["Vadim Abramov, MD (Internal Medicine)", "Mark Dedvukaj, MD (Physical Medicine & Rehabilitation)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Vadim Abramov, MD (Internal Medicine)", "Mark Dedvukaj, MD (Physical Medicine & Rehabilitation)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Brooklyn Heights",
@@ -97,7 +101,8 @@
           "lat": 40.69,
           "lon": -73.99,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Local 1199", "Medicare", "One Call", "UnitedHealthcare"],
-          "providers": ["Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Sanjeev Agarwal, MD (Pain Management)"]
+          "providers": ["Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Sanjeev Agarwal, MD (Pain Management)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Bushwick (PM&R)",
@@ -117,7 +122,8 @@
           "lat": 40.68,
           "lon": -73.91,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Local 1199"],
-          "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Derek Johnston, MD (Pain Management)", "George Resnick, DC (Chiropractic)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Onyinyechi Chidomere, MD (Physical Medicine & Rehabilitation)", "Andrew Hsia (Nurse Practitioner)"]
+          "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Derek Johnston, MD (Pain Management)", "George Resnick, DC (Chiropractic)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Onyinyechi Chidomere, MD (Physical Medicine & Rehabilitation)", "Andrew Hsia (Nurse Practitioner)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Bushwick (Orthopedics)",
@@ -137,7 +143,8 @@
           "lat": 40.68,
           "lon": -73.91,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Local 1199"],
-          "providers": ["Ashley Simela, DO (Spine)", "Derek Johnston, MD (Pain Management)", "Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "George Resnick, DC (Chiropractic)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Onyinyechi Chidomere, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Ashley Simela, DO (Spine)", "Derek Johnston, MD (Pain Management)", "Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "George Resnick, DC (Chiropractic)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Onyinyechi Chidomere, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["Orthopedics", "Sports Medicine", "Injections / Procedures"]
         },
         {
           "name": "Canarsie",
@@ -156,7 +163,8 @@
           "url": "https://painandinjury.com/locations/dhd-medical-p-c-canarsie/",
           "lat": 40.62,
           "lon": -73.92,
-          "providers": ["Ashley Simela, DO (Spine)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Yolande Bernard, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Ashley Simela, DO (Spine)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Yolande Bernard, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Flatbush",
@@ -176,7 +184,8 @@
           "lat": 40.64,
           "lon": -73.96,
           "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "HealthFirst", "Medicare", "UnitedHealthcare"],
-          "providers": ["Nunzio Saulle, MD (Physical Medicine & Rehabilitation)", "Chinweike Izeogu, MD (Pain Management)", "Mark Dedvukaj, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Nunzio Saulle, MD (Physical Medicine & Rehabilitation)", "Chinweike Izeogu, MD (Pain Management)", "Mark Dedvukaj, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Physical Therapy", "EMG/NCS"]
         },
         {
           "name": "Sunset Park",
@@ -195,7 +204,8 @@
           "url": "https://painandinjury.com/locations/dhd-medical-p-c-sunset-park/",
           "lat": 40.65,
           "lon": -74.01,
-          "providers": ["Ashley Simela, DO (Spine)", "Shouhei Yamagami, MD (Physical Medicine & Rehabilitation)", "Thomas Mathew, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Ashley Simela, DO (Spine)", "Shouhei Yamagami, MD (Physical Medicine & Rehabilitation)", "Thomas Mathew, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
 
         {
@@ -216,7 +226,8 @@
           "lat": 40.62,
           "lon": -73.73,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "CHS IPA", "Cigna", "Corvel", "Emblem Health", "Fidelis", "First Health", "HealthCare Partners", "HealthFirst", "Humana", "Medicaid", "Medicare", "NYCE PPO", "One Call", "Oscar", "Railroad Medicare", "UnitedHealthcare", "Wellcare"],
-          "providers": ["Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Garrett Moss, MD (Orthopedic Surgery)", "Munif Hussain, MD (Sports Medicine)", "Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Robert Iadevaio, MD (Pain Management)"]
+          "providers": ["Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Garrett Moss, MD (Orthopedic Surgery)", "Munif Hussain, MD (Sports Medicine)", "Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Robert Iadevaio, MD (Pain Management)"],
+          "services": ["Interventional Pain Management", "Orthopedics", "Sports Medicine", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Cedarhurst (PT / PM&R)",
@@ -235,7 +246,8 @@
           "url": "https://painandinjury.com/locations/interventional-physical-medicine-and-rehabilitation-cedarhurst-2/",
           "lat": 40.62,
           "lon": -73.73,
-          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)"]
+          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Physical Therapy", "EMG/NCS"]
         },
         {
           "name": "Hempstead",
@@ -255,7 +267,8 @@
           "lat": 40.71,
           "lon": -73.62,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Emblem Health", "Fidelis", "Medicare", "One Call", "UnitedHealthcare"],
-          "providers": ["Ashley Simela, DO (Spine)", "Lauren Bartels Marzuillo, DO (Physical Medicine & Rehabilitation)", "Silvia Geraci, MD (Pain Management)"]
+          "providers": ["Ashley Simela, DO (Spine)", "Lauren Bartels Marzuillo, DO (Physical Medicine & Rehabilitation)", "Silvia Geraci, MD (Pain Management)"],
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Merrick",
@@ -275,7 +288,8 @@
           "lat": 40.66,
           "lon": -73.55,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Emblem Health", "Fidelis", "One Call", "UnitedHealthcare"],
-          "providers": ["Ashley Simela, DO (Spine)", "Silvia Geraci, MD (Pain Management)", "Uzoma Ukomadu, MD (Orthopedic Surgery)"]
+          "providers": ["Ashley Simela, DO (Spine)", "Silvia Geraci, MD (Pain Management)", "Uzoma Ukomadu, MD (Orthopedic Surgery)"],
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Rockville Centre",
@@ -295,7 +309,8 @@
           "lat": 40.66,
           "lon": -73.64,
           "insurances": ["Aetna", "Anthem BCBS", "CHS IPA", "Cigna", "Emblem Health", "Fidelis", "First Health", "HealthCare Partners", "HealthFirst", "Humana", "Medicaid", "Medicare", "NYCE PPO", "Oscar", "Railroad Medicare", "UnitedHealthcare", "Wellcare"],
-          "providers": ["Garrett Moss, MD (Orthopedic Surgery)", "Munif Hussain, MD (Sports Medicine)"]
+          "providers": ["Garrett Moss, MD (Orthopedic Surgery)", "Munif Hussain, MD (Sports Medicine)"],
+          "services": ["Interventional Pain Management", "Orthopedics", "Sports Medicine", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Valley Stream",
@@ -315,7 +330,8 @@
           "lat": 40.66,
           "lon": -73.70,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Emblem Health", "One Call", "UnitedHealthcare"],
-          "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)", "Craig Shalmi, MD (Pain Management)", "Lisa Daley-Clark, MD (Physical Medicine & Rehabilitation)", "Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)"]
+          "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)", "Craig Shalmi, MD (Pain Management)", "Lisa Daley-Clark, MD (Physical Medicine & Rehabilitation)", "Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Westbury",
@@ -335,7 +351,8 @@
           "lat": 40.76,
           "lon": -73.57,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Emblem Health", "Fidelis", "One Call", "UnitedHealthcare"],
-          "providers": ["Ashley Simela, DO (Spine)", "Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Silvia Geraci, MD (Pain Management)"]
+          "providers": ["Ashley Simela, DO (Spine)", "Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Silvia Geraci, MD (Pain Management)"],
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
 
         {
@@ -355,7 +372,8 @@
           "url": "https://painandinjury.com/locations/perry-physical-medicine-rehabilitation-p-c-deer-park/",
           "lat": 40.76,
           "lon": -73.33,
-          "providers": ["Jeffrey Perry, DO (Physical Medicine & Rehabilitation)", "Ashish Kumar, DO (Pain Management)", "George Resnick, DC (Chiropractic)"]
+          "providers": ["Jeffrey Perry, DO (Physical Medicine & Rehabilitation)", "Ashish Kumar, DO (Pain Management)", "George Resnick, DC (Chiropractic)"],
+          "services": ["PM&R", "Interventional Pain Management", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Medford",
@@ -375,7 +393,8 @@
           "lat": 40.82,
           "lon": -72.99,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Emblem Health", "Medicare", "One Call", "UnitedHealthcare"],
-          "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)", "Craig Shalmi, MD (Pain Management)", "George Resnick, DC (Chiropractic)", "Lisa Daley-Clark, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)", "Craig Shalmi, MD (Pain Management)", "George Resnick, DC (Chiropractic)", "Lisa Daley-Clark, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Smithtown",
@@ -395,7 +414,8 @@
           "lat": 40.86,
           "lon": -73.20,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Emblem Health", "One Call", "UnitedHealthcare"],
-          "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)"]
+          "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
 
         {
@@ -415,7 +435,8 @@
           "url": "https://painandinjury.com/locations/dhd-medical-pc-midtown-manhattan/",
           "lat": 40.75,
           "lon": -73.98,
-          "providers": ["Ashley Simela, DO (Spine)", "Lauren Bartels Marzuillo, DO (Physical Medicine & Rehabilitation)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Thomas Mathew, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Ashley Simela, DO (Spine)", "Lauren Bartels Marzuillo, DO (Physical Medicine & Rehabilitation)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Thomas Mathew, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Washington Heights",
@@ -435,7 +456,8 @@
           "lat": 40.85,
           "lon": -73.94,
           "insurances": ["Carisk Partners", "Corvel", "One Call"],
-          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Metul Shah, MD (Pain Management)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Thomas Elias Pobre, MD (Physical Medicine & Rehabilitation)", "Evilina Abayeva (Nurse Practitioner)", "Kimberly Quinton (Nurse Practitioner)"]
+          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Metul Shah, MD (Pain Management)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Thomas Elias Pobre, MD (Physical Medicine & Rehabilitation)", "Evilina Abayeva (Nurse Practitioner)", "Kimberly Quinton (Nurse Practitioner)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
 
         {
@@ -456,7 +478,8 @@
           "lat": 40.76,
           "lon": -73.93,
           "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "Fidelis", "HealthFirst", "Local 1199", "Medicaid", "Medicare", "MetroPlus Health", "UnitedHealthcare"],
-          "providers": ["Mike Pappas, DO (Physical Medicine & Rehabilitation)", "Chinweike Izeogu, MD (Pain Management)", "Michael Jurkowich, MD (Physical Medicine & Rehabilitation)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Ornela Rehova, MD (Physical Medicine & Rehabilitation)", "Sekhar Upadhyayula, MD (Pain Management)"]
+          "providers": ["Mike Pappas, DO (Physical Medicine & Rehabilitation)", "Chinweike Izeogu, MD (Pain Management)", "Michael Jurkowich, MD (Physical Medicine & Rehabilitation)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Ornela Rehova, MD (Physical Medicine & Rehabilitation)", "Sekhar Upadhyayula, MD (Pain Management)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS"]
         },
         {
           "name": "Bellerose",
@@ -476,7 +499,8 @@
           "lat": 40.73,
           "lon": -73.72,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Emblem Health", "One Call", "UnitedHealthcare"],
-          "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)", "Craig Shalmi, MD (Pain Management)", "Lisa Daley-Clark, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)", "Craig Shalmi, MD (Pain Management)", "Lisa Daley-Clark, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Rego Park",
@@ -496,7 +520,8 @@
           "lat": 40.73,
           "lon": -73.86,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel"],
-          "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Barry Katzman, MD (Orthopedic Surgery)", "Derek Johnston, MD (Pain Management)", "Yana Abayev, DO (Physical Medicine & Rehabilitation)"]
+          "providers": ["Gautam Khakhar, MD (Physical Medicine & Rehabilitation)", "Ashley Simela, DO (Spine)", "Barry Katzman, MD (Orthopedic Surgery)", "Derek Johnston, MD (Pain Management)", "Yana Abayev, DO (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
 
         {
@@ -517,7 +542,8 @@
           "lat": 40.91,
           "lon": -73.78,
           "insurances": ["Carisk Partners", "Corvel", "One Call"],
-          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Betsy Labarbera (Nurse Practitioner)"]
+          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Betsy Labarbera (Nurse Practitioner)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "White Plains",
@@ -537,7 +563,8 @@
           "lat": 41.02,
           "lon": -73.76,
           "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "Fidelis", "Medicare", "MVP Health Care", "Railroad Medicare", "UnitedHealthcare"],
-          "providers": ["Christopher Lee, MD (Pain Management)", "Dina Nelson, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Christopher Lee, MD (Pain Management)", "Dina Nelson, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
 
         {
@@ -635,7 +662,8 @@
           "lat": 40.79,
           "lon": -74.03,
           "insurances": ["Aetna", "Amerihealth", "Cigna", "Medicare", "UnitedHealthcare"],
-          "providers": ["Ashley Simela, DO (Spine)", "Seth Schran, MD (Physical Medicine & Rehabilitation)"]
+          "providers": ["Ashley Simela, DO (Spine)", "Seth Schran, MD (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "Acupuncture", "EMG/NCS", "Injections / Procedures"]
         },
         {
           "name": "Teaneck",
@@ -655,7 +683,8 @@
           "lat": 40.89,
           "lon": -74.01,
           "insurances": ["Aetna", "Amerihealth", "Cigna", "Medicare", "UnitedHealthcare"],
-          "providers": ["Seth Schran, MD (Physical Medicine & Rehabilitation)", "Fatma Minhas-Kucuk, AC (Acupuncturist)"]
+          "providers": ["Seth Schran, MD (Physical Medicine & Rehabilitation)", "Fatma Minhas-Kucuk, AC (Acupuncturist)"],
+          "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "Acupuncture", "EMG/NCS", "Injections / Procedures"]
         },
 
         {
