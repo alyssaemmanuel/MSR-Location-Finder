@@ -18,7 +18,7 @@
         '07719':[40.18,-74.02],'07726':[40.29,-74.34],'07728':[40.26,-74.28],
         '08755':[39.96,-74.20],'08831':[40.31,-74.43],'14094':[43.17,-78.69],
         '14120':[43.09,-78.88],'14127':[42.76,-78.75],'14209':[42.91,-78.87],
-        '14221':[42.98,-78.73],'14226':[42.98,-78.80],'14301':[43.10,-79.06]
+        '14221':[42.98,-78.73],'14224':[42.86,-78.73],'14226':[42.98,-78.80],'14301':[43.10,-79.06]
       };
 
       // UI Element References
@@ -612,14 +612,14 @@
           titleText.textContent = currentSelectedProvider !== 'ALL' ? currentSelectedProvider : (currentSelectedSubregion !== 'ALL' ? currentSelectedSubregion : (currentSelectedState === 'NY' ? 'New York' : currentSelectedState === 'NJ' ? 'New Jersey' : 'Connecticut'));
           searchedZip.textContent = '';
           searchedZip.style.display = 'none';
-          status.textContent = `Showing ${results.length} of 47 locations`;
+          status.textContent = `Showing ${results.length} of 49 locations`;
           distanceNote.style.display = 'none';
         } else {
           kicker.textContent = 'CLINICAL DIRECTORY';
           titleText.textContent = 'All Office Locations';
           searchedZip.textContent = '';
           searchedZip.style.display = 'none';
-          status.textContent = `Showing all 47 office locations`;
+          status.textContent = `Showing all 49 office locations`;
           distanceNote.style.display = 'none';
         }
 
@@ -770,7 +770,7 @@
 
         if (!query) {
           note.className = 'privacy-note';
-          note.textContent = 'Leaving search blank populates all 47 offices. Distance is calculated from searched coordinates.';
+          note.textContent = 'Leaving search blank populates all 49 offices. Distance is calculated from searched coordinates.';
           currentSelectedState = 'ALL';
           currentSelectedSubregion = 'ALL';
           currentSelectedProvider = 'ALL';
