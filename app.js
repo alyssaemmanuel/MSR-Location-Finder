@@ -552,6 +552,7 @@
           list.innerHTML = displayed.map((office, idx) => {
             const gmb = gmbUrl(office, query);
             const isDistance = office.distance !== undefined;
+            const isThirdPartyScheduling = /Somers Orthopaedic|Advanced Orthopedics and Sports Medicine Institute/.test(office.practice);
             const formattedHours = formatHours(office.hours);
             const phoneClean = formatPhone(office.phone);
             const directClean = office.directPhone ? formatPhone(office.directPhone) : '';
@@ -565,6 +566,7 @@
                     <span class="town-name">${office.name}</span>
                     <span class="office-practice">${office.practice}</span>
                     <span class="office-address-text">${office.address}, ${office.city}, ${office.state} ${office.zip}</span>
+                    ${isThirdPartyScheduling ? `<div class="scheduling-flag"><span aria-hidden="true">&#128681;</span> Scheduling is handled by the office directly &mdash; collect full name &amp; contact information and hand off to the Office Manager.</div>` : ''}
                     <div class="office-split-container">
                       <div class="split-col">
                         <span class="split-col-title">OFFICE INFORMATION</span>

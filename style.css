@@ -84,7 +84,8 @@
       border-bottom-color: var(--blue);
       font-weight: 700;
     }
-    .site-header nav a:hover {
+    .site-header nav a:hover,
+    .site-header nav a:focus-visible {
       color: var(--blue);
     }
 
@@ -652,6 +653,21 @@
       font-weight: 400;
       margin-bottom: 2px;
       display: block;
+    }
+
+    .scheduling-flag {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: var(--radius-sm);
+      color: #991b1b !important;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 6px 10px;
+      margin-top: 6px;
     }
 
     /* Accordion Split Details Container */
