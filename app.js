@@ -158,18 +158,16 @@
       };
 
       const renderTagSection = (sectionId, label, items, unavailableText) => {
-        if (items && items.length) {
-          return `
-            <button type="button" class="insurance-toggle" data-target="${sectionId}" aria-expanded="false">
-              ${label} (${items.length})
-              <span class="insurance-toggle-icon" aria-hidden="true">&#9662;</span>
-            </button>
-            <div class="insurance-tags" id="${sectionId}" hidden>
-              ${items.map(name => `<span class="insurance-tag">${name}</span>`).join('')}
-            </div>
-          `;
-        }
-        return `<span class="insurance-unavailable">${unavailableText}</span>`;
+        const hasItems = items && items.length;
+        return `
+          <button type="button" class="insurance-toggle" data-target="${sectionId}" aria-expanded="false">
+            ${label}${hasItems ? ` (${items.length})` : ''}
+            <span class="insurance-toggle-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="insurance-tags" id="${sectionId}" hidden>
+            ${hasItems ? items.map(name => `<span class="insurance-tag">${name}</span>`).join('') : `<span class="insurance-unavailable">${unavailableText}</span>`}
+          </div>
+        `;
       };
 
       const gmbUrl = (office, origin = currentSearch) => {
