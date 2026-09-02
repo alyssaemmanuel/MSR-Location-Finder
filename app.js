@@ -161,11 +161,12 @@
         if (office.gmbUrl) {
           return office.gmbUrl;
         }
-        const destination = encodeURIComponent(`${office.practice}, ${office.address}, ${office.city}, ${office.state} ${office.zip}`);
-        if (origin) {
-          return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${destination}`;
-        }
-        return `https://www.google.com/maps/search/?api=1&query=${destination}`;
+        // Strip parenthetical notes (e.g. "(Entry on 39th St)") - useful for staff to read,
+        // but they confuse Google's address geocoder when included in the destination query.
+        const cleanAddress = office.address.replace(/\s*\([^)]*\)/g, '').trim();
+        const destination = encodeURIComponent(`${office.practice}, ${cleanAddress}, ${office.city}, ${office.state} ${office.zip}`);
+        const originParam = origin ? `&origin=${encodeURIComponent(origin)}` : '';
+        return `https://www.google.com/maps/dir/?api=1${originParam}&destination=${destination}`;
       };
 
       function populateSubregionTabs() {
