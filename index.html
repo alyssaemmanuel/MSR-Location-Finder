@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MSR Location Finder | Clinical Directory</title>
+  <meta name="description" content="Find nearby MSR-supported office locations by ZIP code, address, or borough/county.">
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, noimageindex">
+
+  <!-- 4-Quadrant vector favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='none'/%3E%3Crect x='12' y='12' width='82' height='82' rx='28' fill='%232296f3'/%3E%3Crect x='118' y='12' width='58' height='58' rx='20' fill='%230179bf'/%3E%3Crect x='12' y='118' width='58' height='58' rx='20' fill='%230179bf'/%3E%3Crect x='94' y='94' width='82' height='82' rx='28' fill='%235fc4ff'/%3E%3C/svg%3E">
+
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="MSR Pain and Injury home">
+        <span class="brand-logo">
+          <img src="https://msr-location-finder.vercel.app/msr-logo.png" alt="Musculoskeletal Resources Injury Doctors" onerror="this.onerror=null; this.src='/msr-logo.png';">
+        </span>
+      </a>
+      
+      <nav aria-label="Primary navigation">
+        <a href="#finder" class="active">Location Lookup</a>
+        <a href="https://painandinjury.com/locations-map/" target="_blank" rel="noreferrer">Official Directory</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <!-- Left Column: Search Console & Metrics -->
+        <div class="hero-left">
+          <div class="hero-badge-kicker"><span></span> Provider Routing Directory</div>
+          <h1>Find the closest office. <em>Fast.</em></h1>
+          <p>Search by ZIP code or street address to calculate proximity mileage, or navigate regional clinical hubs below to route appointments with direct office managers, hours, and medical records contacts.</p>
+          
+          <form class="zip-search" id="zip-form" aria-label="Find an office by ZIP code or street address">
+            <div class="zip-search-console">
+              <div class="search-input-wrap">
+                <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input id="zip" name="zip" autocomplete="street-address" maxlength="180" value="" placeholder="e.g. 10016 or 265 Madison Ave, New York, NY" aria-label="Search by ZIP code or street address">
+              </div>
+              <button type="submit">Find offices &rarr;</button>
+            </div>
+            <p class="privacy-note" id="zip-note">Leaving search blank populates all 47 offices. Distance is calculated from searched coordinates.</p>
+          </form>
+
+          <div class="hero-stats" aria-label="Network highlights">
+            <div><strong id="stat-offices-count">47</strong><span>office locations</span></div>
+            <div><strong>3</strong><span>states covered</span></div>
+            <div><strong>12</strong><span>boroughs &amp; counties</span></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Institutional Scheduling Protocol Card -->
+        <div class="hero-scheduling-card" role="region" aria-label="Staff Scheduling Reference">
+          <div class="scheduling-header">
+            <h3>Scheduling Protocol</h3>
+          </div>
+          <ul class="scheduling-list">
+            <li class="scheduling-item">
+              <span class="scheduling-marker" aria-hidden="true"></span>
+              <div class="scheduling-text">
+                <strong>Complete Intake Sheet</strong>
+                <span>Verify injury details, carrier, attorney, and patient demographics.</span>
+              </div>
+            </li>
+            <li class="scheduling-item">
+              <span class="scheduling-marker" aria-hidden="true"></span>
+              <div class="scheduling-text">
+                <strong>Check Appointment Availability</strong>
+                <span>Review provider schedules and specialties for the closest location.</span>
+              </div>
+            </li>
+            <li class="scheduling-item">
+              <span class="scheduling-marker" aria-hidden="true"></span>
+              <div class="scheduling-text">
+                <strong>If Available: Schedule Directly</strong>
+                <span>Book patient into time slot via standard booking system.</span>
+              </div>
+            </li>
+            <li class="scheduling-item">
+              <span class="scheduling-marker" aria-hidden="true"></span>
+              <div class="scheduling-text">
+                <strong>If Not Available: Contact Office</strong>
+                <span>Call designated Office Manager / Escalation Contact directly.</span>
+              </div>
+            </li>
+            <li class="scheduling-item">
+              <span class="scheduling-marker" aria-hidden="true"></span>
+              <div class="scheduling-text">
+                <strong>Send Appointment Confirmation</strong>
+                <span>Click Appointment Confirmation to launch the pre-formatted email template.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="finder" id="finder" aria-labelledby="finder-title">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker" id="section-kicker">CLINICAL DIRECTORY</span>
+          <h2 id="finder-title"><span id="finder-title-text">All Office Locations</span> <span id="searched-zip"></span></h2>
+        </div>
+        <p role="status" aria-live="polite"><i></i><span id="results-status">Showing all 47 office locations</span></p>
+      </div>
+
+      <!-- Segmented State & Regional Filters -->
+      <div class="nav-tab-filters" id="nav-tab-filters" aria-label="Filter locations by state and region">
+        <div class="filter-group-row">
+          <span class="filter-group-label">State:</span>
+          <div class="filter-tab-items" id="state-filter-tabs">
+            <button type="button" class="filter-tab-btn active" data-state="ALL">All States <span class="count">(47)</span></button>
+            <button type="button" class="filter-tab-btn" data-state="NY">New York <span class="count">(39)</span></button>
+            <button type="button" class="filter-tab-btn" data-state="NJ">New Jersey <span class="count">(7)</span></button>
+            <button type="button" class="filter-tab-btn" data-state="CT">Connecticut <span class="count">(1)</span></button>
+          </div>
+        </div>
+        <div class="filter-group-row">
+          <span class="filter-group-label">Region:</span>
+          <div class="filter-tab-items" id="subregion-filter-tabs">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <div class="finder-layout">
+        <div class="results-panel">
+          <ol class="office-list" id="office-list" aria-label="MSR-supported offices list"></ol>
+          <button type="button" id="show-all-btn" class="show-all-btn" style="display: none;">Show all offices (47) &darr;</button>
+          <p class="distance-note" id="distance-note" style="display: none;">Distances are approximate and calculated from your searched location.</p>
+        </div>
+        <div class="map-panel">
+          <div class="map-toolbar">
+            <div class="map-toolbar-info">
+              <span class="map-dot"></span>
+              <div class="map-toolbar-text">
+                <strong id="map-name">Select an Office</strong>
+                <small id="map-practice">Click any location card or pin to view details</small>
+              </div>
+            </div>
+            <div class="map-toolbar-actions">
+              <button type="button" id="map-confirm-btn" class="btn-confirm-appt">Appointment Confirmation &nearr;</button>
+              <a id="map-learn-link" class="btn-learn-more" href="https://painandinjury.com/locations-map/" target="_blank" rel="noreferrer">Learn More &nearr;</a>
+            </div>
+          </div>
+          <div id="map-frame"></div>
+          <div class="map-legend">
+            <div class="map-legend-items">
+              <span><i class="legend-active"></i> MSR Office</span>
+              <span id="legend-search-origin" style="display: none;"><i class="legend-origin"></i> Searched Location</span>
+            </div>
+            <span>Pan and zoom to explore</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast Notification for Launching Outlook -->
+    <div class="toast-notify" id="toast-notify" role="alert" aria-live="assertive">
+      <span id="toast-message">Opening Outlook...</span>
+    </div>
+
+    <footer>
+      <a class="brand footer-brand" href="#top">
+        <span class="brand-logo">
+          <img src="https://msr-location-finder.vercel.app/msr-logo.png" alt="Musculoskeletal Resources Injury Doctors" onerror="this.onerror=null; this.src='/msr-logo.png';">
+        </span>
+      </a>
+      <p>Internal clinical and routing reference tool for MSR team members. Office information reflects the verified MSR directory.</p>
+      <p class="footer-meta">No patient data is stored. Address lookup and map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>. &copy; 2026 Musculoskeletal Resources</p>
+    </footer>
+    <a class="mobile-call" href="tel:+18009496100"><span aria-hidden="true">&bull;</span> Call MSR</a>
+  </main>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script src="/app.js"></script>
+</body>
+</html>
