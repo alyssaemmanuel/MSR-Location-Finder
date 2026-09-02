@@ -563,20 +563,22 @@
                   </div>
                   ${isDistance ? `<div class="distance"><strong>${office.distance.toFixed(1)}</strong><small>miles</small></div>` : ''}
                 </button>
+                ${(() => {
+                  const noFaultLabel = office.state === 'NJ' ? 'PIP' : 'No-Fault';
+                  const allInsurances = [noFaultLabel, `Workers' Comp`, ...(office.insurances || [])];
+                  return `
                 <div class="office-insurance-row">
-                  <div class="no-fault-note">No-Fault, Workers&rsquo; Comp, and attorney-represented cases are accepted at this location.</div>
-                  ${office.insurances && office.insurances.length ? `
-                    <button type="button" class="insurance-toggle" data-idx="${idx}" aria-expanded="false">
-                      Insurances Accepted (${office.insurances.length})
-                      <span class="insurance-toggle-icon" aria-hidden="true">&#9662;</span>
-                    </button>
-                    <div class="insurance-tags" id="insurance-tags-${idx}" hidden>
-                      ${office.insurances.map(name => `<span class="insurance-tag">${name}</span>`).join('')}
-                    </div>
-                  ` : `
-                    <span class="insurance-unavailable">Insurance data unavailable for this location &mdash; call office to confirm.</span>
-                  `}
+                  <button type="button" class="insurance-toggle" data-idx="${idx}" aria-expanded="false">
+                    Insurances Accepted (${allInsurances.length})
+                    <span class="insurance-toggle-icon" aria-hidden="true">&#9662;</span>
+                  </button>
+                  <div class="insurance-tags" id="insurance-tags-${idx}" hidden>
+                    ${allInsurances.map(name => `<span class="insurance-tag">${name}</span>`).join('')}
+                    ${office.insurances && office.insurances.length ? '' : `<span class="insurance-unavailable">Other insurances unavailable for this location &mdash; call office to confirm.</span>`}
+                  </div>
                 </div>
+                  `;
+                })()}
                 <div class="office-actions">
                   <button type="button" class="btn-confirm-appt" data-index="${idx}">Appointment Confirmation <span aria-hidden="true">&nearr;</span></button>
                   <a class="btn-learn-more" href="${office.url}" target="_blank" rel="noreferrer">Learn More About Location <span aria-hidden="true">&nearr;</span></a>

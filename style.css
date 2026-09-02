@@ -612,14 +612,6 @@
     }
     .active .office-insurance-row { display: block; }
 
-    .no-fault-note {
-      color: var(--blue-deep);
-      font-size: 11.5px;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-
     .insurance-toggle {
       display: flex;
       align-items: center;
@@ -663,9 +655,11 @@
     }
 
     .insurance-unavailable {
+      flex-basis: 100%;
       color: var(--slate-500);
       font-size: 11.5px;
       font-style: italic;
+      margin-top: 2px;
     }
 
     .distance { text-align: right; display: grid; color: var(--blue); padding-top: 2px; }
