@@ -533,11 +533,11 @@
                       <div class="split-col">
                         <span class="split-col-title">OFFICE INFORMATION</span>
                         <div class="split-row">
-                          <b>Office Manager:</b>
+                          <b>Office Manager:</b><br>
                           <span>${office.manager}</span>
                         </div>
                         <div class="split-row">
-                          <b>Hours:</b>
+                          <b>Hours:</b><br>
                           <span>${formattedHours}</span>
                         </div>
                         <div class="split-row">
@@ -548,12 +548,12 @@
                       <div class="split-col">
                         <span class="split-col-title">CONTACT INFORMATION</span>
                         <div class="split-row">
-                          <b>Appointment Requests:</b>
+                          <b>Appointment Requests:</b><br>
                           <a href="tel:${office.phone.replace(/\D/g, '')}">${phoneClean}</a>
                           ${office.directPhone ? `<br><a href="tel:${office.directPhone.replace(/\D/g, '')}">${directClean}</a>` : ''}
                         </div>
                         <div class="split-row">
-                          <b>Non-Appointment Requests:</b>
+                          <b>Non-Appointment Requests:</b><br>
                           <span>${office.escalation}:</span><br>
                           ${office.escalationPhone ? `<a href="tel:${office.escalationPhone.replace(/\D/g, '')}">${escalationPhone}</a>` : ''}
                         </div>
@@ -563,8 +563,8 @@
                   ${isDistance ? `<div class="distance"><strong>${office.distance.toFixed(1)}</strong><small>miles</small></div>` : ''}
                 </button>
                 <div class="office-actions">
-                  <button type="button" class="btn-confirm-appt" data-index="${idx}">Appointment Confirmation &nearr;</button>
-                  <a class="btn-learn-more" href="${office.url}" target="_blank" rel="noreferrer">Learn More &nearr;</a>
+                  <button type="button" class="btn-confirm-appt" data-index="${idx}">Appointment Confirmation <span aria-hidden="true">&nearr;</span></button>
+                  <a class="btn-learn-more" href="${office.url}" target="_blank" rel="noreferrer">Learn More About Location <span aria-hidden="true">&nearr;</span></a>
                 </div>
               </li>
             `;
