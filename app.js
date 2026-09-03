@@ -161,9 +161,10 @@
 
       const renderEscalation = (office) => {
         if (office.escalationContacts && office.escalationContacts.length) {
-          return office.escalationContacts.map(c => `
+          const numbered = office.escalationContacts.length > 1;
+          return office.escalationContacts.map((c, i) => `
             <div class="escalation-contact">
-              <span>${c.name}:</span><br>
+              <span>${numbered ? `${i + 1}. ` : ''}${c.name}:</span><br>
               ${c.phone ? `<a href="tel:${c.phone.replace(/\D/g, '')}">${formatPhone(c.phone)}</a>` : ''}
               ${c.email ? `<br><a href="mailto:${c.email}">${c.email}</a>` : ''}
             </div>
@@ -810,9 +811,10 @@
         lines.push(`Medical Records Email: ${office.medEmail || 'Not available'}`);
         const escalationLabel = office.appointmentContactsBelow ? 'Appointment & Non-Appointment Requests' : 'Non-Appointment Requests';
         if (office.escalationContacts && office.escalationContacts.length) {
+          const numbered = office.escalationContacts.length > 1;
           lines.push(`${escalationLabel}:`);
-          office.escalationContacts.forEach(c => {
-            lines.push(`  - ${c.name}${c.phone ? `: ${formatPhone(c.phone)}` : ''}${c.email ? ` / ${c.email}` : ''}`);
+          office.escalationContacts.forEach((c, i) => {
+            lines.push(`  ${numbered ? `${i + 1}. ` : '- '}${c.name}${c.phone ? `: ${formatPhone(c.phone)}` : ''}${c.email ? ` / ${c.email}` : ''}`);
           });
         } else {
           lines.push(`${escalationLabel}: ${office.escalation || ''}${office.escalationPhone ? ` - ${formatPhone(office.escalationPhone)}` : ''}`);
