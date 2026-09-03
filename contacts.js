@@ -42,13 +42,26 @@
     ],
   };
 
-  // Keyed by exact contact `company` field
+  // Keyed by contact `company` field (matched with spacing/case ignored - see normSpace)
   const FIRM_NOTES = {
     'Chopra & Nocerino, P.C.': [
       { text: 'Do NOT schedule new patients from this firm at Perry PM&R Deer Park location.' },
       { text: 'Schedule at the next available location, regardless of distance.' },
     ],
+    'TopDog Law': [
+      { label: 'Outside specialist referrals', text: 'Patient selects provider in advance.' },
+      { text: 'Document selected provider in the intake.' },
+    ],
   };
+
+  // Ignores case and whitespace so "TopDog" / "Top Dog" / "topdog" are always treated as the same value
+  const normSpace = (str) => String(str || '').toLowerCase().replace(/\s+/g, '');
+
+  function findNoteKey(dict, value) {
+    if (!value) return null;
+    const target = normSpace(value);
+    return Object.keys(dict).find((k) => normSpace(k) === target) || null;
+  }
 
   const renderNoteItem = (item) => `
     <li>${item.label ? `<b>${item.label}:</b> ` : ''}${item.text}</li>
@@ -139,9 +152,10 @@
 
     let matches = contacts;
     if (q) {
+      const qNorm = normSpace(q);
       matches = contacts.filter((c) => {
-        return (c.name && c.name.toLowerCase().includes(q)) ||
-          (c.company && c.company.toLowerCase().includes(q)) ||
+        return (c.name && (c.name.toLowerCase().includes(q) || normSpace(c.name).includes(qNorm))) ||
+          (c.company && (c.company.toLowerCase().includes(q) || normSpace(c.company).includes(qNorm))) ||
           (c.phone && c.phone.replace(/\D/g, '').includes(q.replace(/\D/g, '')) && q.replace(/\D/g, ''));
       });
     }
@@ -188,12 +202,14 @@
     };
 
     list.innerHTML = shown.map((c) => {
-      const nameHtml = ATTORNEY_NOTES[c.name]
-        ? `<span class="contact-name has-scheduling-notes" data-notes-key="attorney::${c.name}" tabindex="0">${c.name} <span class="provider-note-indicator" aria-hidden="true">&#9432;</span></span>`
+      const attorneyKey = findNoteKey(ATTORNEY_NOTES, c.name);
+      const nameHtml = attorneyKey
+        ? `<span class="contact-name has-scheduling-notes" data-notes-key="attorney::${attorneyKey}" tabindex="0">${c.name} <span class="provider-note-indicator" aria-hidden="true">&#9432;</span></span>`
         : `<span class="contact-name">${c.name || '(No name)'}</span>`;
+      const firmKey = findNoteKey(FIRM_NOTES, c.company);
       const companyHtml = c.company
-        ? (FIRM_NOTES[c.company]
-            ? `<span class="contact-company has-scheduling-notes" data-notes-key="firm::${c.company}" tabindex="0">${c.company} <span class="provider-note-indicator" aria-hidden="true">&#9432;</span></span>`
+        ? (firmKey
+            ? `<span class="contact-company has-scheduling-notes" data-notes-key="firm::${firmKey}" tabindex="0">${c.company} <span class="provider-note-indicator" aria-hidden="true">&#9432;</span></span>`
             : `<span class="contact-company">${c.company}</span>`)
         : '';
       return `
