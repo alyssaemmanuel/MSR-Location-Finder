@@ -358,9 +358,18 @@
         populateProviderFilter();
       }
 
+      function overrideActiveSearch() {
+        currentTextSearchMatches = null;
+        input.value = '';
+        note.className = 'privacy-note';
+        note.textContent = 'Leaving search blank populates all offices.';
+        isShowAll = true;
+      }
+
       providerFilterSelect.addEventListener('change', () => {
         currentSelectedProvider = providerFilterSelect.value;
-        render(currentOrigin, currentSearch);
+        overrideActiveSearch();
+        render(null, '');
       });
 
       stateTabsContainer.addEventListener('click', (e) => {
@@ -372,7 +381,8 @@
         currentSelectedSubregion = 'ALL';
         populateSubregionTabs();
         populateProviderFilter();
-        render(currentOrigin, currentSearch);
+        overrideActiveSearch();
+        render(null, '');
       });
 
       subregionTabsContainer.addEventListener('click', (e) => {
@@ -382,7 +392,8 @@
         btn.classList.add('active');
         currentSelectedSubregion = btn.dataset.subregion;
         populateProviderFilter();
-        render(currentOrigin, currentSearch);
+        overrideActiveSearch();
+        render(null, '');
       });
 
       clearFiltersBtn.addEventListener('click', () => {
@@ -687,6 +698,44 @@
         }
       }
 
+      function launchEmailVerifierEmail() {
+        const subject = 'Insurance Verification Request';
+        const body =
+          `Hi Carolina,\r\n` +
+          `Can you please assist with verifying the patient’s insurance for the attached intake sheet?\r\n` +
+          `Once verification is complete, please Reply All to confirm and include any relevant verification details or notes. In your reply, please be sure to return the updated intake sheet. \r\n` +
+          `Thank you for your help!`;
+
+        showToast('Opening Outlook...');
+
+        try {
+          const emlContent =
+            `X-Unsent: 1\r\n` +
+            `To: \r\n` +
+            `Subject: ${subject}\r\n` +
+            `MIME-Version: 1.0\r\n` +
+            `Content-Type: text/plain; charset=utf-8\r\n` +
+            `\r\n` +
+            body;
+
+          const blob = new Blob([emlContent], { type: 'message/rfc822' });
+          const url = URL.createObjectURL(blob);
+          const tempLink = document.createElement('a');
+          tempLink.href = url;
+          tempLink.download = `Insurance_Verification_Request.eml`;
+          document.body.appendChild(tempLink);
+          tempLink.click();
+
+          setTimeout(() => {
+            if (tempLink.parentNode) tempLink.parentNode.removeChild(tempLink);
+            URL.revokeObjectURL(url);
+          }, 1500);
+        } catch (err) {
+          const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoUrl;
+        }
+      }
+
       function updateMap(displayedOffices, origin) {
         initMap();
         if (!leafletMap) return;
@@ -976,6 +1025,8 @@
       document.querySelector('#map-confirm-btn').addEventListener('click', () => {
         if (activeOffice) openApptModal(activeOffice);
       });
+
+      document.querySelector('#email-verifier-btn').addEventListener('click', launchEmailVerifierEmail);
 
       showAllBtn.addEventListener('click', () => {
         isShowAll = !isShowAll;

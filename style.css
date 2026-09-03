@@ -170,7 +170,7 @@
       gap: 10px;
       flex-wrap: wrap;
     }
-    .shortcuts-links a {
+    .shortcuts-links a, .shortcuts-links .shortcuts-btn {
       background: var(--blue-surface);
       border: 1px solid #d3e5f2;
       color: var(--blue);
@@ -178,9 +178,10 @@
       font-weight: 700;
       padding: 5px 12px;
       border-radius: var(--radius-sm);
+      cursor: pointer;
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
-    .shortcuts-links a:hover {
+    .shortcuts-links a:hover, .shortcuts-links .shortcuts-btn:hover {
       background: var(--blue);
       border-color: var(--blue);
       color: var(--white);
