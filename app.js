@@ -762,7 +762,7 @@
       function launchSuggestEditEmail(office) {
         if (!office) return;
         const to = 'mnunez@healthplusmgmt.com,aemmanuel@healthplusmgmt.com,memartinez@healthplusmgmt.com';
-        const subject = 'MSR Location Finder Edit';
+        const subject = `MSR Location Finder Suggested Edit | ${office.name}`;
         const body = [
           'Hi Marketing Team,',
           '',
