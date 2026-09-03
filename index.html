@@ -52,9 +52,7 @@
         <!-- Left Column: Search Console & Metrics -->
         <div class="hero-left">
           <div class="shortcuts-box">
-            <div class="shortcuts-header">
-              <h3>Shortcuts</h3>
-            </div>
+            <span class="shortcuts-label">Shortcuts</span>
             <div class="shortcuts-links">
               <a href="https://painandinjury.com" target="_blank" rel="noreferrer">painandinjury.com</a>
               <a href="https://msrconcierge.com" target="_blank" rel="noreferrer">msrconcierge.com</a>
@@ -143,8 +141,12 @@
       <!-- Segmented State & Regional Filters -->
       <div class="nav-tab-filters" id="nav-tab-filters" aria-label="Filter locations by state and region">
         <div class="filters-header">
-          <h3>Filters</h3>
-          <button type="button" id="clear-filters-btn" class="clear-filters-btn" hidden>Clear Filters <span aria-hidden="true">&times;</span></button>
+          <button type="button" id="clear-filters-btn" class="filters-heading-btn" disabled>
+            <svg id="filters-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <span id="filters-heading-text">Filters</span>
+          </button>
         </div>
         <div class="filter-group-row">
           <span class="filter-group-label">State:</span>

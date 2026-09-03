@@ -37,6 +37,10 @@
       const subregionTabsContainer = document.querySelector('#subregion-filter-tabs');
       const providerFilterSelect = document.querySelector('#provider-filter-select');
       const clearFiltersBtn = document.querySelector('#clear-filters-btn');
+      const filtersHeadingIcon = document.querySelector('#filters-heading-icon');
+      const filtersHeadingText = document.querySelector('#filters-heading-text');
+      const FILTERS_ICON = '<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>';
+      const CLEAR_FILTERS_ICON = '<circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>';
       const legendOriginSpan = document.querySelector('#legend-search-origin');
 
       // Toast Notification
@@ -763,7 +767,9 @@
 
         // Update Section Title & Kicker
         const isFiltered = currentSelectedState !== 'ALL' || currentSelectedSubregion !== 'ALL' || currentSelectedProvider !== 'ALL';
-        clearFiltersBtn.hidden = !isFiltered;
+        clearFiltersBtn.disabled = !isFiltered;
+        filtersHeadingIcon.innerHTML = isFiltered ? CLEAR_FILTERS_ICON : FILTERS_ICON;
+        filtersHeadingText.textContent = isFiltered ? 'Clear Filters' : 'Filters';
         if (query) {
           kicker.textContent = 'PROXIMITY SEARCH RESULTS';
           titleText.textContent = 'Offices near';
