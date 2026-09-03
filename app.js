@@ -699,41 +699,17 @@
       }
 
       function launchEmailVerifierEmail() {
+        const to = 'carivera@healthplusmgmt.com';
         const subject = 'Insurance Verification Request';
-        const body =
-          `Hi Carolina,\r\n` +
-          `Can you please assist with verifying the patient’s insurance for the attached intake sheet?\r\n` +
-          `Once verification is complete, please Reply All to confirm and include any relevant verification details or notes. In your reply, please be sure to return the updated intake sheet. \r\n` +
-          `Thank you for your help!`;
+        const body = [
+          'Hi Carolina,',
+          'Can you please assist with verifying the patient’s insurance for the attached intake sheet?',
+          'Once verification is complete, please Reply All to confirm and include any relevant verification details or notes. In your reply, please be sure to return the updated intake sheet.',
+          'Thank you for your help!'
+        ].join('\r\n\r\n');
 
         showToast('Opening Outlook...');
-
-        try {
-          const emlContent =
-            `X-Unsent: 1\r\n` +
-            `To: \r\n` +
-            `Subject: ${subject}\r\n` +
-            `MIME-Version: 1.0\r\n` +
-            `Content-Type: text/plain; charset=utf-8\r\n` +
-            `\r\n` +
-            body;
-
-          const blob = new Blob([emlContent], { type: 'message/rfc822' });
-          const url = URL.createObjectURL(blob);
-          const tempLink = document.createElement('a');
-          tempLink.href = url;
-          tempLink.download = `Insurance_Verification_Request.eml`;
-          document.body.appendChild(tempLink);
-          tempLink.click();
-
-          setTimeout(() => {
-            if (tempLink.parentNode) tempLink.parentNode.removeChild(tempLink);
-            URL.revokeObjectURL(url);
-          }, 1500);
-        } catch (err) {
-          const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          window.location.href = mailtoUrl;
-        }
+        window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       }
 
       function updateMap(displayedOffices, origin) {
