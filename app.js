@@ -1023,7 +1023,6 @@
       const apptDateInput = document.querySelector('#appt-date');
       const apptTimeInput = document.querySelector('#appt-time');
       const apptProviderInput = document.querySelector('#appt-provider');
-      const apptProviderList = document.querySelector('#appt-provider-list');
       let pendingApptOffice = null;
 
       function openApptModal(office) {
@@ -1032,9 +1031,9 @@
         apptModalOfficeLabel.textContent = `${office.name} — ${office.practice}`;
         apptDateInput.value = '';
         apptTimeInput.value = '';
-        apptProviderInput.value = '';
-        apptProviderList.innerHTML = (office.providers || [])
-          .map(p => `<option value="${providerNameOnly(p)}"></option>`).join('');
+        const uniqueProviders = [...new Set((office.providers || []).map(providerNameOnly))];
+        apptProviderInput.innerHTML = `<option value="">Select provider (optional)</option>` +
+          uniqueProviders.map(name => `<option value="${name}">${name}</option>`).join('');
         apptModalBackdrop.hidden = false;
         setTimeout(() => apptDateInput.focus(), 0);
       }
