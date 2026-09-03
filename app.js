@@ -214,6 +214,23 @@
           { label: 'Double Booking', text: 'Not permitted.' },
           { label: 'Important', text: 'Patient should understand the purpose of the appointment before scheduling.' },
         ],
+        'Rafael Abramov, DO': [
+          { label: 'Do Not Schedule', text: '', sub: [
+            'Patients that previously treated at a Citimed location',
+            'Dog bite injuries',
+            'Police brutality cases',
+          ] },
+          { label: 'Referral Restrictions', text: '', sub: [
+            'William Schweitzer — no referrals from this law firm',
+            'Liakis Law Firm: New No-Fault patients only — no WC or Lien cases',
+            'Gorayeb & Associates: New No-Fault patients only — no WC or Lien cases',
+          ] },
+          { label: 'Accidents Over 3 Months Old — Review Required', text: '', sub: [
+            'Verify claim is open/active',
+            'Document reason for visit/delayed treatment',
+            'Collect medical records before appointment date',
+          ] },
+        ],
       };
 
       const providerTagRenderer = (entry) => {
