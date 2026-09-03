@@ -456,18 +456,33 @@
         return new Date(y, m - 1, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
       }
 
-      function formatApptTime(timeStr) {
-        if (!timeStr) return '';
-        const [h, m] = timeStr.split(':').map(Number);
-        const dt = new Date();
-        dt.setHours(h, m, 0, 0);
-        return dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      function parseTimeText(str) {
+        if (!str) return null;
+        const s = str.trim().toLowerCase();
+        let m = s.match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)$/);
+        if (m) {
+          let h = parseInt(m[1], 10);
+          const min = m[2] ? parseInt(m[2], 10) : 0;
+          if (h < 1 || h > 12 || min > 59) return null;
+          if (h === 12) h = 0;
+          if (m[3] === 'pm') h += 12;
+          return { hours: h, minutes: min };
+        }
+        m = s.match(/^(\d{1,2}):(\d{2})$/);
+        if (m) {
+          const h = parseInt(m[1], 10);
+          const min = parseInt(m[2], 10);
+          if (h > 23 || min > 59) return null;
+          return { hours: h, minutes: min };
+        }
+        return null;
       }
 
       function apptDateTimeRange(appt) {
         const [y, m, d] = appt.date.split('-').map(Number);
-        const [h, min] = appt.time.split(':').map(Number);
-        const start = new Date(y, m - 1, d, h, min, 0);
+        const parsed = parseTimeText(appt.time);
+        if (!parsed) return null;
+        const start = new Date(y, m - 1, d, parsed.hours, parsed.minutes, 0);
         const end = new Date(start.getTime() + APPT_DURATION_MINUTES * 60000);
         return { start, end };
       }
@@ -560,8 +575,8 @@
         const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
         const gmbLink = office.gmbUrl || gmbUrl(office);
         const dateDisplay = appt.date ? formatApptDate(appt.date) : '[Day, Date]';
-        const timeDisplay = appt.time ? formatApptTime(appt.time) : '[Time]';
-        const hasSchedule = Boolean(appt.date && appt.time);
+        const timeDisplay = appt.time || '[Time]';
+        const hasSchedule = Boolean(appt.date && appt.time && parseTimeText(appt.time));
 
         const calendarLinksText = hasSchedule ?
           `Add to Google Calendar: ${buildGoogleCalLink(office, appt)}\r\n` +
@@ -601,8 +616,8 @@
         const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
         const gmbLink = office.gmbUrl || gmbUrl(office);
         const dateDisplay = appt.date ? formatApptDate(appt.date) : '[Day, Date]';
-        const timeDisplay = appt.time ? formatApptTime(appt.time) : '[Time]';
-        const hasSchedule = Boolean(appt.date && appt.time);
+        const timeDisplay = appt.time || '[Time]';
+        const hasSchedule = Boolean(appt.date && appt.time && parseTimeText(appt.time));
         const calLinkStyle = 'color:#0179bf;text-decoration:underline;font-weight:600;';
 
         const calendarLinksHtml = hasSchedule ? `
