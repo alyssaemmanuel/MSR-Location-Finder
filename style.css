@@ -196,7 +196,7 @@
       letter-spacing: -1.2px;
       max-width: 720px;
       margin: 0;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--slate-900);
     }
     h1 em {
@@ -419,7 +419,7 @@
       font-size: clamp(24px, 2.6vw, 32px);
       letter-spacing: -0.8px;
       margin: 3px 0 0;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--slate-900);
     }
     #finder-title-text { color: var(--slate-900); }
