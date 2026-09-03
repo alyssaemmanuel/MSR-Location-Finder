@@ -1071,10 +1071,6 @@
 
       document.querySelector('#email-verifier-btn').addEventListener('click', launchEmailVerifierEmail);
 
-      document.querySelector('#map-suggest-edit-btn').addEventListener('click', () => {
-        if (activeOffice) launchSuggestEditEmail(activeOffice);
-      });
-
       showAllBtn.addEventListener('click', () => {
         isShowAll = !isShowAll;
         render(currentOrigin, currentSearch, true);
