@@ -349,6 +349,15 @@
         providerFilterSelect.value = currentSelectedProvider;
       }
 
+      function resetTabFilters() {
+        currentSelectedState = 'ALL';
+        currentSelectedSubregion = 'ALL';
+        currentSelectedProvider = 'ALL';
+        stateTabsContainer.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.state === 'ALL'));
+        populateSubregionTabs();
+        populateProviderFilter();
+      }
+
       providerFilterSelect.addEventListener('change', () => {
         currentSelectedProvider = providerFilterSelect.value;
         render(currentOrigin, currentSearch);
@@ -1003,13 +1012,8 @@
         if (!query) {
           note.className = 'privacy-note';
           note.textContent = 'Leaving search blank populates all offices.';
-          currentSelectedState = 'ALL';
-          currentSelectedSubregion = 'ALL';
-          currentSelectedProvider = 'ALL';
           currentTextSearchMatches = null;
-          stateTabsContainer.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.state === 'ALL'));
-          populateSubregionTabs();
-          populateProviderFilter();
+          resetTabFilters();
           isShowAll = true;
           render(null, '');
           document.querySelector('#finder').scrollIntoView({ behavior: 'smooth' });
@@ -1023,6 +1027,7 @@
           const textMatches = offices.filter(o => o.name.toLowerCase().includes(q) || o.practice.toLowerCase().includes(q));
           if (textMatches.length) {
             currentTextSearchMatches = textMatches;
+            resetTabFilters();
             note.className = 'privacy-note';
             note.textContent = `Showing ${textMatches.length} ${textMatches.length === 1 ? 'location' : 'locations'} matching "${query}".`;
             isShowAll = true;
@@ -1032,6 +1037,7 @@
           }
         }
         currentTextSearchMatches = null;
+        resetTabFilters();
 
         submit.disabled = true;
         submit.innerHTML = 'Searching… &rarr;';
