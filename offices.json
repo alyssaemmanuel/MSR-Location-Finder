@@ -867,10 +867,11 @@
           "region": "Western NY",
           "zip": "14226",
           "phone": "716.282.2888",
-          "directPhone": "716.228.1595",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Kristy Frye",
-          "escalationPhone": "716.228.1595",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Friday: 7:00 AM – 7:00 PM",
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-amherst/",
           "lat": 42.98,
@@ -887,10 +888,11 @@
           "region": "Western NY",
           "zip": "14209",
           "phone": "716.282.2888",
-          "directPhone": "716.228.1595",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Kristy Frye",
-          "escalationPhone": "716.228.1595",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Friday: 7:00 AM – 7:00 PM",
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-buffalo/",
           "lat": 42.91,
@@ -907,10 +909,11 @@
           "region": "Western NY",
           "zip": "14094",
           "phone": "716.282.2888",
-          "directPhone": "716.228.1595",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Kristy Frye",
-          "escalationPhone": "716.228.1595",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Friday: 7:00 AM – 7:00 PM",
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-lockport/",
           "lat": 43.17,
@@ -927,10 +930,11 @@
           "region": "Western NY",
           "zip": "14301",
           "phone": "716.282.2888",
-          "directPhone": "716.228.1595",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Kristy Frye",
-          "escalationPhone": "716.228.1595",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Friday: 7:00 AM – 7:00 PM",
           "url": "https://painandinjury.com/locations/dhd-medical-pc-midtown-manhattan-niagara-falls/",
           "lat": 43.10,
@@ -947,10 +951,11 @@
           "region": "Western NY",
           "zip": "14127",
           "phone": "716.282.2888",
-          "directPhone": "716.228.1595",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Kristy Frye",
-          "escalationPhone": "716.228.1595",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Friday: 7:00 AM – 7:00 PM",
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-orchard-park/",
           "lat": 42.76,
@@ -967,10 +972,11 @@
           "region": "Western NY",
           "zip": "14120",
           "phone": "716.282.2888",
-          "directPhone": "716.228.1595",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Kristy Frye",
-          "escalationPhone": "716.228.1595",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Friday: 7:00 AM – 7:00 PM",
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-wheatfield/",
           "lat": 43.09,
@@ -986,11 +992,12 @@
           "state": "NY",
           "region": "Western NY",
           "zip": "14221",
-          "phone": "716.869.4210",
-          "directPhone": "716.228.1595",
+          "phone": "716.282.2888",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Kristy Frye",
-          "escalationPhone": "716.228.1595",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Friday: 7:00 AM – 7:00 PM",
           "url": "https://painandinjury.com/locations/williamsville-physical-therapy-injury-care/",
           "lat": 42.98,
@@ -1007,10 +1014,11 @@
           "region": "Western NY",
           "zip": "14221",
           "phone": "716.282.2888",
-          "directPhone": "716.228.1595",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Kristy Frye",
-          "escalationPhone": "716.228.1595",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Friday: 7:00 AM – 7:00 PM",
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-south-williamsville/",
           "lat": 42.96,
@@ -1026,10 +1034,12 @@
           "state": "NY",
           "region": "Western NY",
           "zip": "14224",
-          "phone": "516.970.4160",
+          "phone": "716.282.2888",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Marcus",
-          "escalationPhone": "516.231.4624",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday - Tuesday: 7:30 AM - 6:00 PM, Wednesday: 7:30 AM - 4:00 PM, Thursday: 7:30 AM - 3:00 PM, Friday: 7:30 AM - 1:00 PM",
           "url": "https://painandinjury.com/locations/west-seneca-physical-therapy-injury-care/",
           "lat": 42.86,
@@ -1044,10 +1054,12 @@
           "state": "NY",
           "region": "Western NY",
           "zip": "14221",
-          "phone": "716.869.4210",
+          "phone": "716.282.2888",
           "medEmail": "kristy@advancedcarephysicaltherapy.com",
-          "escalation": "Marcus",
-          "escalationPhone": "516.231.4624",
+          "escalationContacts": [
+            { "name": "Kristy Frye", "email": "kristy@advancedcarephysicaltherapy.com", "phone": "716.228.1595" },
+            { "name": "Craig Reinstein", "email": "Craig@advancedcarephysicaltherapy.com", "phone": "716.553.6339" }
+          ],
           "hours": "Monday: 8:00 AM - 4:30 PM, Tuesday: 9:00 AM - 6:30 PM, Wednesday: 8:00 AM - 4:30 PM, Thursday: 9:00 AM - 6:30 PM, Friday: 8:00 AM - 2:00 PM",
           "url": "https://painandinjury.com/locations-map/",
           "lat": 42.96,
