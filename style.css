@@ -56,9 +56,29 @@
       padding: 0 36px;
       background: var(--white);
       border-bottom: 1px solid var(--slate-200);
-      position: relative;
-      z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: min-height 0.2s ease, box-shadow 0.2s ease;
     }
+    .site-header.scrolled {
+      min-height: 56px;
+      box-shadow: var(--shadow-card);
+    }
+    .brand-logo, .brand-logo img,
+    .brand-logo-concierge, .brand-logo-concierge img,
+    .brand-divider, .home-icon-link, .home-icon-link svg {
+      transition: height 0.2s ease, width 0.2s ease;
+    }
+    .site-header.scrolled .brand-logo,
+    .site-header.scrolled .brand-logo img,
+    .site-header.scrolled .brand-logo-concierge,
+    .site-header.scrolled .brand-logo-concierge img {
+      height: 38px;
+    }
+    .site-header.scrolled .brand-divider { height: 22px; }
+    .site-header.scrolled .home-icon-link { width: 38px; height: 38px; }
+    .site-header.scrolled .home-icon-link svg { width: 20px; height: 20px; }
     .header-left { display: flex; align-items: center; gap: 14px; }
     .brand { display: inline-flex; align-items: center; }
     .brand-logo { display: block; height: 56px; flex: 0 0 auto; }
