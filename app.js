@@ -66,6 +66,10 @@
       let currentSelectedSubregion = 'ALL';
       let currentSelectedProvider = 'ALL';
       let currentTextSearchMatches = null;
+
+      // Satellite locations (e.g. a doctor-only suite sharing a building with another office)
+      // are still fully searchable/browsable, but don't add to any of the location tallies.
+      const countableOffices = () => offices.filter(o => !o.satelliteLocation);
       let isShowAll = true;
       let activeOffice = null;
       let leafletMap = null;
@@ -367,9 +371,9 @@
       };
 
       function populateSubregionTabs() {
-        let pool = offices;
+        let pool = countableOffices();
         if (currentSelectedState !== 'ALL') {
-          pool = offices.filter(o => o.state === currentSelectedState);
+          pool = pool.filter(o => o.state === currentSelectedState);
         }
 
         const uniqueRegions = [...new Set(pool.map(o => o.region))].sort();
@@ -957,14 +961,14 @@
           titleText.textContent = currentSelectedProvider !== 'ALL' ? currentSelectedProvider : (currentSelectedSubregion !== 'ALL' ? currentSelectedSubregion : (currentSelectedState === 'NY' ? 'New York' : currentSelectedState === 'NJ' ? 'New Jersey' : 'Connecticut'));
           searchedZip.textContent = '';
           searchedZip.style.display = 'none';
-          status.textContent = `Showing ${results.length} of 50 locations`;
+          status.textContent = `Showing ${results.length} of ${countableOffices().length} locations`;
           distanceNote.style.display = 'none';
         } else {
           kicker.textContent = 'CLINICAL DIRECTORY';
           titleText.textContent = 'All Office Locations';
           searchedZip.textContent = '';
           searchedZip.style.display = 'none';
-          status.textContent = `Showing all 50 office locations`;
+          status.textContent = `Showing all ${countableOffices().length} office locations`;
           distanceNote.style.display = 'none';
         }
 
@@ -1251,11 +1255,24 @@
         document.querySelector('#finder').scrollIntoView({ behavior: 'smooth' });
       });
 
+      function populateStateTabCounts() {
+        const countable = countableOffices();
+        stateTabsContainer.querySelectorAll('[data-state]').forEach(btn => {
+          const state = btn.dataset.state;
+          const count = state === 'ALL' ? countable.length : countable.filter(o => o.state === state).length;
+          const countEl = btn.querySelector('.count');
+          if (countEl) countEl.textContent = `(${count})`;
+        });
+      }
+
       function initApp() {
         fetch('offices.json')
           .then((res) => res.json())
           .then((data) => {
             offices = data;
+            const statEl = document.querySelector('#stat-offices-count');
+            if (statEl) statEl.textContent = countableOffices().length;
+            populateStateTabCounts();
             populateSubregionTabs();
             populateProviderFilter();
             render(null, '');
