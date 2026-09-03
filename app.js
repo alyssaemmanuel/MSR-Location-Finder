@@ -999,9 +999,9 @@
                   `;
                 })()}
                 <div class="office-actions">
+                  <button type="button" class="btn-suggest-edit" data-index="${idx}">Suggest an Edit</button>
                   <button type="button" class="btn-confirm-appt" data-index="${idx}">Appointment Confirmation <span aria-hidden="true">&nearr;</span></button>
                   <a class="btn-learn-more" href="${office.url}" target="_blank" rel="noreferrer">Learn More About Location <span aria-hidden="true">&nearr;</span></a>
-                  <button type="button" class="btn-confirm-appt btn-suggest-edit" data-index="${idx}">Suggest an Edit</button>
                 </div>
               </li>
             `;

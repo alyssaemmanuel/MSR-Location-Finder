@@ -1019,14 +1019,20 @@
       color: var(--blue-dark) !important;
     }
     .btn-suggest-edit {
-      color: var(--slate-500) !important;
+      background: var(--slate-100) !important;
+      border: 1px solid var(--slate-200) !important;
+      color: var(--slate-600) !important;
       font-size: 11px;
       font-weight: 600;
-      text-decoration: underline;
+      text-decoration: none;
+      padding: 4px 10px !important;
+      border-radius: var(--radius-sm);
     }
     .btn-suggest-edit:hover,
     .btn-suggest-edit:active {
-      color: var(--slate-700) !important;
+      background: var(--slate-200) !important;
+      border-color: var(--slate-300) !important;
+      color: var(--slate-800) !important;
     }
 
     .office-actions a.btn-learn-more {
