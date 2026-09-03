@@ -252,7 +252,7 @@
           "lat": 40.62,
           "lon": -73.73,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "CHS IPA", "Cigna", "Corvel", "Emblem Health", "Fidelis", "First Health", "HealthCare Partners", "HealthFirst", "Humana", "Medicaid", "Medicare", "NYCE PPO", "One Call", "Oscar", "Railroad Medicare", "UnitedHealthcare", "Wellcare"],
-          "providers": ["Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Garrett Moss, MD (Orthopedic Surgery)", "Munif Hussain, MD (Sports Medicine)", "Robert Iadevaio, MD (Pain Management)"],
+          "providers": ["Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Garrett Moss, MD (Orthopedic Surgery)", "Munif Hussain, MD (Sports Medicine)", "Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Robert Iadevaio, MD (Pain Management)"],
           "services": ["Interventional Pain Management", "Orthopedics", "Sports Medicine", "EMG/NCS", "Injections / Procedures"]
         },
         {
@@ -272,7 +272,7 @@
           "url": "https://painandinjury.com/locations/interventional-physical-medicine-and-rehabilitation-cedarhurst-2/",
           "lat": 40.62,
           "lon": -73.73,
-          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)"],
+          "providers": [],
           "services": ["PM&R", "Physical Therapy", "EMG/NCS"]
         },
         {
