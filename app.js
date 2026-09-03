@@ -844,7 +844,9 @@
                         </div>
                         <div class="split-row">
                           <b>Medical Records Email:</b>
-                          <a href="mailto:${office.medEmail}">${office.medEmail}</a>
+                          ${office.medEmail
+                            ? `<a href="mailto:${office.medEmail}">${office.medEmail}</a>`
+                            : `<span class="info-unavailable">Not available &mdash; contact office directly.</span>`}
                         </div>
                       </div>
                       <div class="split-col">

@@ -5,7 +5,7 @@
       --blue-surface: #f4f9fd;
       --blue-subtle: #e8f3fa;
       --sky: #5ebde6;
-      --teal: #14b8a6;
+      --teal: rgb(71, 193, 189);
       --slate-900: #0f172a;
       --slate-800: #1e293b;
       --slate-700: #334155;
@@ -964,6 +964,11 @@
       font-size: 11.5px;
       font-style: italic;
       margin-top: 2px;
+    }
+    .info-unavailable {
+      color: var(--slate-500);
+      font-style: italic;
+      font-weight: 400;
     }
 
     .distance { text-align: right; display: grid; color: var(--blue); padding-top: 2px; }
