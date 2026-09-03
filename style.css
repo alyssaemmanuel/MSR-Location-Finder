@@ -891,6 +891,8 @@
     }
     .provider-note-indicator { font-size: 12px; line-height: 1; }
 
+    .has-scheduling-notes { cursor: help; }
+
     .provider-tooltip {
       position: absolute;
       z-index: 5000;
