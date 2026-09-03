@@ -233,11 +233,54 @@
         ],
       };
 
+      // Practice group abbreviations -> a distinguishing substring of the real `practice` field,
+      // so searching an abbreviation (e.g. "AOSMI") finds every office under that brand.
+      const PRACTICE_ABBREVIATIONS = {
+        'ACPT': 'advanced care physical therapy',
+        'AOSMI': 'advanced orthopedics and sports medicine institute',
+        'DHD': 'dhd medical',
+        'IPM&R': 'interventional physical medicine',
+        'LHMA': 'lower hudson medical associates',
+        'NJS': 'njs physical medicine',
+        'PAPPAS': 'pappas physical medicine',
+        'PERRY': 'perry physical medicine',
+        'PM&R': 'physical medicine & rehabilitation of ny',
+        'PREMIER': 'premier',
+        'SIO': 'south island orthopedics',
+        'SOMERS': 'somers orthopaedic',
+        'SS&RM': 'synergy spinecare',
+        'SSIP': 'spine sports & interventional pain medicine',
+        'TBW': 'total body works medical',
+      };
+
+      // Medical Directors per practice group (see abbreviations table). A director's tag is
+      // only ever highlighted where they already appear as a provider - this list does not
+      // add them anywhere new.
+      const MEDICAL_DIRECTORS = new Set([
+        'Ashley Simela, DO',
+        'Rafael Abramov, DO',
+        'Christopher Lee, MD',
+        'Nunzio Saulle, MD',
+        'Mike Pappas, DO',
+        'Jeffrey Perry, DO',
+        'Gautam Khakhar, MD',
+        'Steven Ross, DO',
+        'Nicholas DeBellis, MD',
+        'Seth Schran, MD',
+        'Sanjeev Agarwal, MD',
+        'Vadim Abramov, MD',
+      ]);
+
       const providerTagRenderer = (entry) => {
         const name = providerNameOnly(entry);
         const notes = PROVIDER_NOTES[name];
-        if (!notes) return `<span class="insurance-tag provider-tag">${entry}</span>`;
-        return `<span class="insurance-tag provider-tag provider-tag-has-notes" data-provider="${name}" tabindex="0">${entry} <span class="provider-note-indicator" aria-hidden="true">&#9432;</span></span>`;
+        const isDirector = MEDICAL_DIRECTORS.has(name);
+        const classes = ['insurance-tag', 'provider-tag'];
+        if (notes) classes.push('provider-tag-has-notes');
+        if (isDirector) classes.push('provider-tag-director');
+        const label = isDirector ? `${entry} &mdash; Medical Director` : entry;
+        if (!notes) return `<span class="${classes.join(' ')}">${label}</span>`;
+        return `<span class="${classes.join(' ')}" data-provider="${name}" tabindex="0">${label} <span class="provider-note-indicator" aria-hidden="true">&#9432;</span></span>`;
       };
 
       const renderNoteItem = (item) => `
@@ -1147,7 +1190,9 @@
 
         if (!isZip) {
           const q = query.toLowerCase();
-          const textMatches = offices.filter(o => o.name.toLowerCase().includes(q) || o.practice.toLowerCase().includes(q));
+          const abbrevExpansion = PRACTICE_ABBREVIATIONS[query.trim().toUpperCase()];
+          const textMatches = offices.filter(o => o.name.toLowerCase().includes(q) || o.practice.toLowerCase().includes(q) ||
+            (abbrevExpansion && o.practice.toLowerCase().includes(abbrevExpansion)));
           if (textMatches.length) {
             currentTextSearchMatches = textMatches;
             resetTabFilters();

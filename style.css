@@ -914,6 +914,19 @@
       color: var(--white);
       outline: none;
     }
+    .provider-tag-director {
+      background: #fef3e2;
+      border-color: #f3d19e;
+      color: #92400e;
+      font-weight: 700;
+    }
+    .provider-tag-director:hover,
+    .provider-tag-director:focus-visible {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: var(--white);
+      outline: none;
+    }
     .provider-note-indicator { font-size: 12px; line-height: 1; }
 
     .has-scheduling-notes { cursor: help; }
