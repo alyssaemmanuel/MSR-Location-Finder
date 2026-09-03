@@ -914,14 +914,14 @@
           titleText.textContent = currentSelectedProvider !== 'ALL' ? currentSelectedProvider : (currentSelectedSubregion !== 'ALL' ? currentSelectedSubregion : (currentSelectedState === 'NY' ? 'New York' : currentSelectedState === 'NJ' ? 'New Jersey' : 'Connecticut'));
           searchedZip.textContent = '';
           searchedZip.style.display = 'none';
-          status.textContent = `Showing ${results.length} of 49 locations`;
+          status.textContent = `Showing ${results.length} of 50 locations`;
           distanceNote.style.display = 'none';
         } else {
           kicker.textContent = 'CLINICAL DIRECTORY';
           titleText.textContent = 'All Office Locations';
           searchedZip.textContent = '';
           searchedZip.style.display = 'none';
-          status.textContent = `Showing all 49 office locations`;
+          status.textContent = `Showing all 50 office locations`;
           distanceNote.style.display = 'none';
         }
 

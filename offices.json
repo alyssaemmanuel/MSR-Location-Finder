@@ -252,11 +252,11 @@
           "lat": 40.62,
           "lon": -73.73,
           "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "CHS IPA", "Cigna", "Corvel", "Emblem Health", "Fidelis", "First Health", "HealthCare Partners", "HealthFirst", "Humana", "Medicaid", "Medicare", "NYCE PPO", "One Call", "Oscar", "Railroad Medicare", "UnitedHealthcare", "Wellcare"],
-          "providers": ["Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Garrett Moss, MD (Orthopedic Surgery)", "Munif Hussain, MD (Sports Medicine)", "Rafael Abramov, DO (Physical Medicine & Rehabilitation)", "Robert Iadevaio, MD (Pain Management)"],
+          "providers": ["Nicholas DeBellis, MD (Orthopedic Surgery Sports Medicine)", "Garrett Moss, MD (Orthopedic Surgery)", "Munif Hussain, MD (Sports Medicine)", "Robert Iadevaio, MD (Pain Management)"],
           "services": ["Interventional Pain Management", "Orthopedics", "Sports Medicine", "EMG/NCS", "Injections / Procedures"]
         },
         {
-          "name": "Cedarhurst (PT / PM&R)",
+          "name": "Cedarhurst (PT Only)",
           "practice": "Interventional Physical Medicine & Rehabilitation, PC",
           "manager": "Gary Klein",
           "address": "610 Central Avenue",
@@ -273,7 +273,26 @@
           "lat": 40.62,
           "lon": -73.73,
           "providers": [],
-          "services": ["PM&R", "Physical Therapy", "EMG/NCS"]
+          "services": ["Physical Therapy", "EMG/NCS"]
+        },
+        {
+          "name": "Cedarhurst (Doctor Only)",
+          "practice": "Interventional Physical Medicine & Rehabilitation, PC",
+          "manager": "Gary Klein",
+          "address": "657 Central Avenue, Main Level",
+          "city": "Cedarhurst",
+          "state": "NY",
+          "region": "Long Island (Nassau)",
+          "zip": "11516",
+          "phone": "516.537.5500",
+          "escalation": "Gary Klein",
+          "escalationPhone": "516.537.5500",
+          "hours": "Monday: 8:00 AM – 4:00 PM, Tuesday: 10:00 AM – 6:00 PM, Wednesday: 8:00 AM – 4:00 PM, Thursday: 10:00 AM – 6:00 PM, Friday: 8:00 AM – 4:00 PM",
+          "url": "https://painandinjury.com/locations-map/",
+          "lat": 40.62,
+          "lon": -73.73,
+          "providers": ["Rafael Abramov, DO (Physical Medicine & Rehabilitation)"],
+          "services": ["PM&R", "EMG/NCS"]
         },
         {
           "name": "Hempstead",
