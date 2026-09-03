@@ -718,7 +718,7 @@
     .result-number {
       width: 26px;
       height: 26px;
-      border-radius: var(--radius-sm);
+      border-radius: 50%;
       background: var(--blue-surface);
       color: var(--blue);
       display: grid;
