@@ -317,7 +317,7 @@
       width: min(100%, 640px);
     }
     .hero-stats div { display: flex; flex-direction: column; }
-    .hero-stats strong { font-size: 22px; color: var(--blue); font-weight: 800; line-height: 1; }
+    .hero-stats strong { font-size: 22px; color: var(--blue); font-weight: 700; line-height: 1; }
     .hero-stats span {
       color: var(--slate-500);
       font-size: 11px;
@@ -662,10 +662,10 @@
       flex-direction: column;
       gap: 2px;
       font-size: 12px;
-      color: #8a1e5a;
+      color: rgb(1, 121, 191);
     }
-    .sales-rep-block b { color: #8a1e5a; font-weight: 700; margin-right: 4px; }
-    .sales-rep-block a { color: #8a1e5a; font-weight: 600; text-decoration: underline; }
+    .sales-rep-block b { color: rgb(1, 121, 191); font-weight: 700; margin-right: 4px; }
+    .sales-rep-block a { color: rgb(1, 121, 191); font-weight: 600; text-decoration: underline; }
     .sales-rep-block a:hover { opacity: 0.8; }
     .contact-empty {
       grid-column: 1 / -1;

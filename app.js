@@ -65,6 +65,7 @@
       let currentSelectedState = 'ALL';
       let currentSelectedSubregion = 'ALL';
       let currentSelectedProvider = 'ALL';
+      let currentTextSearchMatches = null;
       let isShowAll = true;
       let activeOffice = null;
       let leafletMap = null;
@@ -745,7 +746,7 @@
         currentSearch = query || '';
 
         // 1. Filter offices based on state and region
-        let pool = offices.slice();
+        let pool = currentTextSearchMatches ? currentTextSearchMatches.slice() : offices.slice();
         if (currentSelectedState !== 'ALL') {
           pool = pool.filter(o => o.state === currentSelectedState);
         }
@@ -773,7 +774,14 @@
         clearFiltersBtn.disabled = !isFiltered;
         filtersHeadingIcon.innerHTML = isFiltered ? CLEAR_FILTERS_ICON : FILTERS_ICON;
         filtersHeadingText.textContent = isFiltered ? 'Clear Filters' : 'Filters';
-        if (query) {
+        if (currentTextSearchMatches) {
+          kicker.textContent = 'SEARCH RESULTS';
+          titleText.textContent = 'Results for';
+          searchedZip.textContent = ` "${query}"`;
+          searchedZip.style.display = 'inline';
+          status.textContent = `${results.length} ${results.length === 1 ? 'location' : 'locations'} found`;
+          distanceNote.style.display = 'none';
+        } else if (query) {
           kicker.textContent = 'PROXIMITY SEARCH RESULTS';
           titleText.textContent = 'Offices near';
           searchedZip.textContent = ` ${query}`;
@@ -797,13 +805,13 @@
         }
 
         // Handle visibility limit (show 5 nearest if searched, unless isShowAll is true)
-        const shouldLimit = !isShowAll && query && results.length > 5;
+        const shouldLimit = !isShowAll && query && !currentTextSearchMatches && results.length > 5;
         const displayed = shouldLimit ? results.slice(0, 5) : results;
 
         if (shouldLimit) {
           showAllBtn.style.display = 'inline-flex';
           showAllBtn.innerHTML = `Show all ${results.length} offices &darr;`;
-        } else if (query && results.length > 5 && isShowAll) {
+        } else if (query && !currentTextSearchMatches && results.length > 5 && isShowAll) {
           showAllBtn.style.display = 'inline-flex';
           showAllBtn.innerHTML = `Show top 5 closest &uarr;`;
         } else {
@@ -994,10 +1002,11 @@
 
         if (!query) {
           note.className = 'privacy-note';
-          note.textContent = 'Leaving search blank populates all 49 offices. Distance is calculated from searched coordinates.';
+          note.textContent = 'Leaving search blank populates all offices.';
           currentSelectedState = 'ALL';
           currentSelectedSubregion = 'ALL';
           currentSelectedProvider = 'ALL';
+          currentTextSearchMatches = null;
           stateTabsContainer.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.state === 'ALL'));
           populateSubregionTabs();
           populateProviderFilter();
@@ -1008,17 +1017,28 @@
         }
 
         const isZip = /^\d{5}$/.test(query);
+
+        if (!isZip) {
+          const q = query.toLowerCase();
+          const textMatches = offices.filter(o => o.name.toLowerCase().includes(q) || o.practice.toLowerCase().includes(q));
+          if (textMatches.length) {
+            currentTextSearchMatches = textMatches;
+            note.className = 'privacy-note';
+            note.textContent = `Showing ${textMatches.length} ${textMatches.length === 1 ? 'location' : 'locations'} matching "${query}".`;
+            isShowAll = true;
+            render(null, query);
+            document.querySelector('#finder').scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+        }
+        currentTextSearchMatches = null;
+
         submit.disabled = true;
         submit.innerHTML = 'Searching… &rarr;';
         note.className = 'privacy-note';
         note.textContent = 'Finding nearby offices…';
 
         let coordinate = isZip ? fallback[query] : undefined;
-        if (!coordinate && !isZip) {
-          const q = query.toLowerCase();
-          const nameMatch = offices.find(o => o.name.toLowerCase().includes(q) || o.practice.toLowerCase().includes(q));
-          if (nameMatch) coordinate = [nameMatch.lat, nameMatch.lon];
-        }
         try {
           if (isZip && !coordinate) {
             const response = await fetch(`https://api.zippopotam.us/us/${query}`);
