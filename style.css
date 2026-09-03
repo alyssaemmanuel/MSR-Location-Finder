@@ -1247,81 +1247,68 @@
       opacity: 1;
     }
 
-    /* Floating Quick Actions Sidebar */
+    /* Floating Quick Actions Sidebar - styled to match painandinjury.com's floating bar */
     .floating-sidebar {
       position: fixed;
-      right: 18px;
       top: 50%;
+      right: 0;
       transform: translateY(-50%);
+      padding: 3px 0 10px;
+      background-color: #fff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
       z-index: 900;
       display: flex;
       flex-direction: column;
-      background: var(--white);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-elevated);
-      border: 1px solid var(--slate-200);
     }
     .floating-sidebar-item {
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      background: var(--white);
+      position: relative;
+      width: 55px;
+      height: 45px;
       border: none;
-      border-bottom: 1px solid var(--slate-100);
+      background: none;
       padding: 0;
       cursor: pointer;
-      color: var(--slate-600);
       text-decoration: none;
-      transition: color 0.15s ease, background 0.15s ease;
-    }
-    .floating-sidebar-item:first-child {
-      border-top-left-radius: var(--radius-md);
-      border-top-right-radius: var(--radius-md);
-    }
-    .floating-sidebar-item:last-child {
-      border-bottom: none;
-      border-bottom-left-radius: var(--radius-md);
-      border-bottom-right-radius: var(--radius-md);
-    }
-    .floating-sidebar-item:hover,
-    .floating-sidebar-item:focus-visible {
-      color: var(--blue);
-      background: var(--blue-surface);
-      outline: none;
     }
     .floating-sidebar-icon {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 22px;
-      height: 22px;
+      width: 21px;
+      height: 21px;
+      color: #242424;
+      transition: color 0.3s;
     }
     .floating-sidebar-icon svg { width: 100%; height: 100%; }
+    .floating-sidebar-item:hover .floating-sidebar-icon,
+    .floating-sidebar-item:focus-visible .floating-sidebar-icon {
+      color: #0878be;
+    }
     .floating-sidebar-label {
+      display: block;
       position: absolute;
-      right: calc(100% + 10px);
-      top: 50%;
-      transform: translateY(-50%) translateX(8px);
-      background: var(--white);
-      color: var(--slate-800);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 9px 16px;
-      border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-elevated);
-      border: 1px solid var(--slate-200);
-      white-space: nowrap;
+      right: 100%;
+      top: 0;
+      background-color: #fff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.15s ease, transform 0.15s ease;
+      visibility: hidden;
+      font-size: 17px;
+      line-height: 45px;
+      color: #242424;
+      transform: translateX(-5px);
+      transition: 0.5s ease;
+      padding: 0 25px;
+      width: max-content;
     }
     .floating-sidebar-item:hover .floating-sidebar-label,
     .floating-sidebar-item:focus-visible .floating-sidebar-label {
       opacity: 1;
-      transform: translateY(-50%) translateX(0);
+      visibility: visible;
+      transform: translateX(0);
     }
     @media (max-width: 640px) {
       .floating-sidebar { display: none; }
