@@ -706,12 +706,12 @@
       border: 0;
       background: transparent;
       width: 100%;
-      padding: 15px 16px;
+      padding: 12px 14px;
       display: grid;
       grid-template-columns: 28px 1fr auto;
       align-items: start;
       text-align: left;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
       color: var(--slate-900);
     }
