@@ -524,6 +524,9 @@
         }).join('');
       }
 
+      const nl2br = (str) => String(str || '').replace(/\r\n|\r|\n/g, '<br>');
+      const normalizeCrlf = (str) => String(str || '').replace(/\r\n|\r|\n/g, '\r\n');
+
       function buildPlainTextConfirmation(office, appt = {}) {
         const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
         const gmbLink = office.gmbUrl || gmbUrl(office);
@@ -547,7 +550,7 @@
           `${toBold("Address:")} ${fullAddress}\r\n` +
           `${gmbLink}\r\n\r\n` +
           calendarLinksText +
-          (appt.notes ? `${toBold("Additional Notes:")} ${appt.notes}\r\n\r\n` : '') +
+          (appt.notes ? `${toBold("Additional Notes:")} ${normalizeCrlf(appt.notes)}\r\n\r\n` : '') +
           `${toBold("For the Patient")}\r\n` +
           `Your appointment is confirmed! We look forward to welcoming you.\r\n\r\n` +
           `Please remember to bring your ${toBold("photo ID")}, along with any documents you have available related to your injury, including:\r\n\r\n` +
@@ -571,13 +574,13 @@
         const dateDisplay = appt.date ? formatApptDate(appt.date) : '[Day, Date]';
         const timeDisplay = appt.time ? formatApptTime(appt.time) : '[Time]';
         const hasSchedule = Boolean(appt.date && appt.time);
-        const calBtnStyle = 'display:inline-block;margin:0 10px 10px 0;padding:13px 26px;background:#0179bf;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:700;font-size:11pt;';
+        const calLinkStyle = 'color:#0179bf;text-decoration:underline;font-weight:600;';
 
         const calendarLinksHtml = hasSchedule ? `
-          <p style="margin: 4px 0 18px;">
-            <a href="${buildGoogleCalLink(office, appt)}" target="_blank" style="${calBtnStyle}">Add to Google Calendar</a>
-            <a href="${buildOutlookCalLink(office, appt)}" target="_blank" style="${calBtnStyle}">Add to Outlook Calendar</a>
-            <a href="${buildAppleCalLink(office, appt)}" target="_blank" style="${calBtnStyle}">Add to Apple Calendar</a>
+          <p style="margin: 0 0 16px; line-height: 1.8;">
+            <a href="${buildGoogleCalLink(office, appt)}" target="_blank" style="${calLinkStyle}">Add to Google Calendar &#8599;</a><br>
+            <a href="${buildOutlookCalLink(office, appt)}" target="_blank" style="${calLinkStyle}">Add to Outlook Calendar &#8599;</a><br>
+            <a href="${buildAppleCalLink(office, appt)}" target="_blank" style="${calLinkStyle}">Add to Apple Calendar &#8599;</a>
           </p>` : '';
 
         return `<div style="font-family: Calibri, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #000000;">` +
@@ -592,7 +595,7 @@
             `<strong>Address:</strong> <a href="${gmbLink}" target="_blank" style="color: #0179bf; text-decoration: underline; font-weight: 600;">${fullAddress}</a>` +
           `</p>` +
           calendarLinksHtml +
-          (appt.notes ? `<p style="margin: 0 0 16px;"><strong>Additional Notes:</strong> ${appt.notes}</p>` : '') +
+          (appt.notes ? `<p style="margin: 0 0 16px;"><strong>Additional Notes:</strong> ${nl2br(appt.notes)}</p>` : '') +
           `<p style="margin: 0 0 4px;"><strong>For the Patient</strong></p>` +
           `<p style="margin: 0 0 14px;">Your appointment is confirmed! We look forward to welcoming you.</p>` +
           `<p style="margin: 0 0 8px;">Please remember to bring your <strong>photo ID</strong>, along with any documents you have available related to your injury, including:</p>` +
@@ -1009,13 +1012,18 @@
         note.textContent = 'Finding nearby offices…';
 
         let coordinate = isZip ? fallback[query] : undefined;
+        if (!coordinate && !isZip) {
+          const q = query.toLowerCase();
+          const nameMatch = offices.find(o => o.name.toLowerCase().includes(q) || o.practice.toLowerCase().includes(q));
+          if (nameMatch) coordinate = [nameMatch.lat, nameMatch.lon];
+        }
         try {
           if (isZip && !coordinate) {
             const response = await fetch(`https://api.zippopotam.us/us/${query}`);
             if (!response.ok) throw new Error('not found');
             const data = await response.json(), place = data.places && data.places[0];
             coordinate = [Number(place.latitude), Number(place.longitude)];
-          } else if (!isZip) {
+          } else if (!isZip && !coordinate) {
             const params = new URLSearchParams({ format: 'jsonv2', countrycodes: 'us', limit: '1', q: query });
             const response = await fetch(`https://nominatim.openstreetmap.org/search?${params}`);
             if (!response.ok) throw new Error('not found');

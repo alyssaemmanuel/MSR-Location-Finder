@@ -158,11 +158,10 @@
       background: linear-gradient(90deg, var(--blue) 0%, var(--sky) 100%);
     }
     .shortcuts-label {
-      color: var(--slate-500);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
+      color: var(--slate-800);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
       flex-shrink: 0;
     }
     .shortcuts-links {
@@ -318,7 +317,7 @@
       width: min(100%, 640px);
     }
     .hero-stats div { display: flex; flex-direction: column; }
-    .hero-stats strong { font-size: 22px; color: var(--blue-deep); font-weight: 800; line-height: 1; }
+    .hero-stats strong { font-size: 22px; color: var(--blue); font-weight: 800; line-height: 1; }
     .hero-stats span {
       color: var(--slate-500);
       font-size: 11px;
@@ -428,7 +427,7 @@
       font-size: 11px;
       letter-spacing: 1.2px;
       color: var(--blue);
-      font-weight: 800;
+      font-weight: 700;
       text-transform: uppercase;
     }
     h2 {
@@ -842,7 +841,7 @@
       text-align: left;
       color: var(--slate-500);
       font-size: 10.5px;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 0.6px;
       text-transform: uppercase;
     }
