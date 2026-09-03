@@ -1018,6 +1018,17 @@
     .btn-confirm-appt:active {
       color: var(--blue-dark) !important;
     }
+    .btn-suggest-edit {
+      color: var(--slate-400) !important;
+      font-size: 11px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .btn-suggest-edit:hover,
+    .btn-suggest-edit:active {
+      color: var(--slate-600) !important;
+      text-decoration: underline;
+    }
 
     .office-actions a.btn-learn-more {
       color: var(--blue);

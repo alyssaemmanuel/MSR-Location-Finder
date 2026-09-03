@@ -761,13 +761,15 @@
 
       function launchSuggestEditEmail(office) {
         if (!office) return;
-        const to = 'mnunez@healthplusmgmt.com,memartinez@healthplusmgmt.com,aemmanuel@healthplusmgmt.com';
-        const subject = `Suggested Edit — ${office.name}`;
+        const to = 'mnunez@healthplusmgmt.com,aemmanuel@healthplusmgmt.com,memartinez@healthplusmgmt.com';
+        const subject = 'MSR Location Finder Edit';
         const body = [
+          'Hi Marketing Team,',
+          '',
           `I have a suggestion for the ${office.name} location.`,
           '',
           'Suggested Edit:',
-          '[Enter your suggested edit here]',
+          'Please highlight the incorrect information below and let us know what it should say instead.',
           '',
           '----------------------------------------',
           'Current Information on File',
@@ -999,7 +1001,7 @@
                 <div class="office-actions">
                   <button type="button" class="btn-confirm-appt" data-index="${idx}">Appointment Confirmation <span aria-hidden="true">&nearr;</span></button>
                   <a class="btn-learn-more" href="${office.url}" target="_blank" rel="noreferrer">Learn More About Location <span aria-hidden="true">&nearr;</span></a>
-                  <button type="button" class="btn-confirm-appt btn-suggest-edit" data-index="${idx}">Suggest an Edit <span aria-hidden="true">&nearr;</span></button>
+                  <button type="button" class="btn-confirm-appt btn-suggest-edit" data-index="${idx}">Suggest an Edit</button>
                 </div>
               </li>
             `;
