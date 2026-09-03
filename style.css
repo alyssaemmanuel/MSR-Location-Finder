@@ -6,6 +6,9 @@
       --blue-subtle: #e8f3fa;
       --sky: #5ebde6;
       --teal: rgb(71, 193, 189);
+      --teal-dark: #1f8f8b;
+      --teal-deep: #0d5c59;
+      --teal-surface: #e6f9f8;
       --slate-900: #0f172a;
       --slate-800: #1e293b;
       --slate-700: #334155;
@@ -935,15 +938,15 @@
       outline: none;
     }
     .provider-tag-director {
-      background: #fef3e2;
-      border-color: #f3d19e;
-      color: #92400e;
+      background: var(--teal-surface);
+      border-color: var(--teal);
+      color: var(--teal-deep);
       font-weight: 700;
     }
     .provider-tag-director:hover,
     .provider-tag-director:focus-visible {
-      background: var(--amber);
-      border-color: var(--amber);
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
       color: var(--white);
       outline: none;
     }

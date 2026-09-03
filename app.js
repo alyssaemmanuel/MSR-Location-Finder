@@ -276,10 +276,23 @@
         'Vadim Abramov, MD',
       ]);
 
-      const providerTagRenderer = (entry) => {
+      // Where more than one Medical Director appears as a provider at the same office, only one
+      // of them actually directs that specific location - this narrows the tag to that person.
+      const OFFICE_DIRECTOR_OVERRIDES = {
+        'Tremont / East Bronx': 'Rafael Abramov, DO',
+        'South Bronx': 'Gautam Khakhar, MD',
+        'Bushwick (PM&R)': 'Gautam Khakhar, MD',
+        'Bushwick (Orthopedics)': 'Ashley Simela, DO',
+        'Valley Stream': 'Steven Ross, DO',
+        'Rego Park': 'Gautam Khakhar, MD',
+        'North Bergen': 'Seth Schran, MD',
+      };
+
+      const providerTagRenderer = (officeName) => (entry) => {
         const name = providerNameOnly(entry);
         const notes = PROVIDER_NOTES[name];
-        const isDirector = MEDICAL_DIRECTORS.has(name);
+        const override = OFFICE_DIRECTOR_OVERRIDES[officeName];
+        const isDirector = override ? name === override : MEDICAL_DIRECTORS.has(name);
         const classes = ['insurance-tag', 'provider-tag'];
         if (notes) classes.push('provider-tag-has-notes');
         if (isDirector) classes.push('provider-tag-director');
@@ -1062,7 +1075,7 @@
                   </div>
                 </div>
                 <div class="office-insurance-row">
-                  ${renderTagSection(`providers-tags-${idx}`, 'Providers at This Location', office.providers, 'Provider information not yet available for this location.', providerTagRenderer)}
+                  ${renderTagSection(`providers-tags-${idx}`, 'Providers at This Location', office.providers, 'Provider information not yet available for this location.', providerTagRenderer(office.name))}
                 </div>
                 <div class="office-insurance-row">
                   ${renderTagSection(`services-tags-${idx}`, 'Services at This Location', office.services, 'Service information not yet available for this location.')}
