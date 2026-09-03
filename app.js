@@ -206,6 +206,14 @@
           { label: 'Major Medical', text: 'Dr. Pappas is the only provider INN with most MM plans.' },
           { label: 'Do Not Schedule', text: 'Police brutality cases.' },
         ],
+        'Seth Schran, MD': [
+          { label: 'Body Areas/Conditions', text: 'No known restrictions; provider treats all body areas/conditions (bones, joints, muscles).' },
+          { label: 'Age', text: '8 years and older.' },
+          { label: 'Before Scheduling', text: 'Confirm and document the reason for referral:', sub: ['Pain Management', 'Physical Therapy', 'Both Pain Management & PT', 'Second Opinion'] },
+          { label: 'Existing Care', text: 'If patient is already receiving PT and/or Pain Management, clarify what they are being referred for. If for a second opinion, document clearly.' },
+          { label: 'Double Booking', text: 'Not permitted.' },
+          { label: 'Important', text: 'Patient should understand the purpose of the appointment before scheduling.' },
+        ],
       };
 
       const providerTagRenderer = (entry) => {
@@ -598,9 +606,11 @@
         const calLinkStyle = 'color:#0179bf;text-decoration:underline;font-weight:600;';
 
         const calendarLinksHtml = hasSchedule ? `
-          <p style="margin: 0 0 16px; line-height: 1.8;">
-            <a href="${buildGoogleCalLink(office, appt)}" target="_blank" style="${calLinkStyle}">Add to Google Calendar &#8599;</a><br>
-            <a href="${buildOutlookCalLink(office, appt)}" target="_blank" style="${calLinkStyle}">Add to Outlook Calendar &#8599;</a><br>
+          <p style="margin: 0 0 16px;">
+            <a href="${buildGoogleCalLink(office, appt)}" target="_blank" style="${calLinkStyle}">Add to Google Calendar &#8599;</a>
+            <span style="color:#666;"> &#124; </span>
+            <a href="${buildOutlookCalLink(office, appt)}" target="_blank" style="${calLinkStyle}">Add to Outlook Calendar &#8599;</a>
+            <span style="color:#666;"> &#124; </span>
             <a href="${buildAppleCalLink(office, appt)}" target="_blank" style="${calLinkStyle}">Add to Apple Calendar &#8599;</a>
           </p>` : '';
 

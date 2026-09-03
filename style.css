@@ -171,9 +171,9 @@
       flex-wrap: wrap;
     }
     .shortcuts-links a, .shortcuts-links .shortcuts-btn {
-      background: var(--blue-surface);
-      border: 1px solid #d3e5f2;
-      color: var(--blue);
+      background: var(--blue);
+      border: 1px solid var(--blue);
+      color: var(--white);
       font-size: 12px;
       font-weight: 700;
       padding: 5px 12px;
@@ -182,9 +182,20 @@
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
     .shortcuts-links a:hover, .shortcuts-links .shortcuts-btn:hover {
-      background: var(--blue);
-      border-color: var(--blue);
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
       color: var(--white);
+    }
+    .shortcuts-links a.shortcuts-link-muted {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      color: var(--slate-500);
+      font-weight: 600;
+    }
+    .shortcuts-links a.shortcuts-link-muted:hover {
+      background: var(--slate-50);
+      border-color: var(--slate-300);
+      color: var(--slate-700);
     }
 
     .hero-badge-kicker {
