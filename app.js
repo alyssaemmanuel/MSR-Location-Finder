@@ -36,6 +36,7 @@
       const stateTabsContainer = document.querySelector('#state-filter-tabs');
       const subregionTabsContainer = document.querySelector('#subregion-filter-tabs');
       const providerFilterSelect = document.querySelector('#provider-filter-select');
+      const clearFiltersBtn = document.querySelector('#clear-filters-btn');
       const legendOriginSpan = document.querySelector('#legend-search-origin');
 
       // Toast Notification
@@ -370,6 +371,16 @@
         render(currentOrigin, currentSearch);
       });
 
+      clearFiltersBtn.addEventListener('click', () => {
+        currentSelectedState = 'ALL';
+        currentSelectedSubregion = 'ALL';
+        currentSelectedProvider = 'ALL';
+        stateTabsContainer.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.state === 'ALL'));
+        populateSubregionTabs();
+        populateProviderFilter();
+        render(currentOrigin, currentSearch);
+      });
+
       function selectOffice(index, focusMap) {
         const office = results[index];
         if (!office) return;
@@ -556,7 +567,7 @@
         const dateDisplay = appt.date ? formatApptDate(appt.date) : '[Day, Date]';
         const timeDisplay = appt.time ? formatApptTime(appt.time) : '[Time]';
         const hasSchedule = Boolean(appt.date && appt.time);
-        const calBtnStyle = 'display:inline-block;margin:0 8px 8px 0;padding:8px 14px;background:#0179bf;color:#ffffff;text-decoration:none;border-radius:4px;font-weight:600;font-size:10.5pt;';
+        const calBtnStyle = 'display:inline-block;margin:0 10px 10px 0;padding:13px 26px;background:#0179bf;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:700;font-size:11pt;';
 
         const calendarLinksHtml = hasSchedule ? `
           <p style="margin: 4px 0 18px;">
@@ -752,6 +763,7 @@
 
         // Update Section Title & Kicker
         const isFiltered = currentSelectedState !== 'ALL' || currentSelectedSubregion !== 'ALL' || currentSelectedProvider !== 'ALL';
+        clearFiltersBtn.hidden = !isFiltered;
         if (query) {
           kicker.textContent = 'PROXIMITY SEARCH RESULTS';
           titleText.textContent = 'Offices near';
@@ -921,6 +933,7 @@
       });
       document.querySelector('#appt-modal-generate').addEventListener('click', () => {
         if (!pendingApptOffice) return;
+        if (!apptDateInput.reportValidity() || !apptTimeInput.reportValidity()) return;
         const appt = {
           date: apptDateInput.value,
           time: apptTimeInput.value,

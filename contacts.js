@@ -7,8 +7,11 @@
   const form = document.querySelector('#contact-search-form');
   const input = document.querySelector('#contact-search');
   const note = document.querySelector('#contact-search-note');
+  const loadMoreBtn = document.querySelector('#load-more-btn');
 
-  const MAX_RESULTS = 100;
+  const PAGE_SIZE = 100;
+  let visibleCount = PAGE_SIZE;
+  let currentQuery = '';
 
   const SALES_REPS = {
     'Jeffrey Rubin': { phone: '(516) 993-0070', email: 'jrubin@healthplusmgmt.com' },
@@ -25,8 +28,9 @@
     return phoneStr;
   };
 
-  function render(query) {
+  function render(query, resetPaging = true) {
     const q = (query || '').trim().toLowerCase();
+    if (resetPaging) visibleCount = PAGE_SIZE;
 
     let matches = contacts;
     if (q) {
@@ -42,17 +46,26 @@
     if (contacts.length === 0) {
       status.textContent = 'No contact data loaded yet.';
       list.innerHTML = `<li class="contact-empty">Contact data hasn't been added to this page yet.</li>`;
+      loadMoreBtn.style.display = 'none';
       return;
     }
 
-    const shown = matches.slice(0, MAX_RESULTS);
-    status.textContent = matches.length > MAX_RESULTS
-      ? `Showing top ${MAX_RESULTS} of ${matches.length} matches`
+    const shown = matches.slice(0, visibleCount);
+    status.textContent = matches.length > shown.length
+      ? `Showing ${shown.length} of ${matches.length} matches`
       : `${matches.length} ${matches.length === 1 ? 'contact' : 'contacts'} found`;
 
     if (shown.length === 0) {
       list.innerHTML = `<li class="contact-empty">No contacts match that search.</li>`;
+      loadMoreBtn.style.display = 'none';
       return;
+    }
+
+    if (matches.length > shown.length) {
+      loadMoreBtn.style.display = 'inline-flex';
+      loadMoreBtn.innerHTML = `Show more contacts (${Math.min(PAGE_SIZE, matches.length - shown.length)} more) &darr;`;
+    } else {
+      loadMoreBtn.style.display = 'none';
     }
 
     const renderSalesRep = (name) => {
@@ -88,7 +101,13 @@
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    render(input.value);
+    currentQuery = input.value;
+    render(currentQuery);
+  });
+
+  loadMoreBtn.addEventListener('click', () => {
+    visibleCount += PAGE_SIZE;
+    render(currentQuery, false);
   });
 
   fetch('contacts.json')
@@ -98,7 +117,6 @@
     })
     .then((data) => {
       contacts = data;
-      note.textContent = `Leaving search blank shows the first ${MAX_RESULTS} contacts.`;
       render('');
     })
     .catch(() => {

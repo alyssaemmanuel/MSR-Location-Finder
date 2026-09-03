@@ -52,7 +52,9 @@
         <!-- Left Column: Search Console & Metrics -->
         <div class="hero-left">
           <div class="shortcuts-box">
-            <span class="shortcuts-label">Shortcuts</span>
+            <div class="shortcuts-header">
+              <h3>Shortcuts</h3>
+            </div>
             <div class="shortcuts-links">
               <a href="https://painandinjury.com" target="_blank" rel="noreferrer">painandinjury.com</a>
               <a href="https://msrconcierge.com" target="_blank" rel="noreferrer">msrconcierge.com</a>
@@ -140,11 +142,9 @@
 
       <!-- Segmented State & Regional Filters -->
       <div class="nav-tab-filters" id="nav-tab-filters" aria-label="Filter locations by state and region">
-        <div class="filters-panel-header">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-          </svg>
-          Filters
+        <div class="filters-header">
+          <h3>Filters</h3>
+          <button type="button" id="clear-filters-btn" class="clear-filters-btn" hidden>Clear Filters <span aria-hidden="true">&times;</span></button>
         </div>
         <div class="filter-group-row">
           <span class="filter-group-label">State:</span>
@@ -221,16 +221,16 @@
           <div class="appt-modal-office" id="appt-modal-office"></div>
           <div class="appt-field-row">
             <div class="appt-field">
-              <label for="appt-date">Appointment Date</label>
-              <input type="date" id="appt-date">
+              <label for="appt-date">Appointment Date <span class="appt-required" aria-hidden="true">*</span></label>
+              <input type="date" id="appt-date" required>
             </div>
             <div class="appt-field">
-              <label for="appt-time">Appointment Time</label>
-              <input type="time" id="appt-time">
+              <label for="appt-time">Appointment Time <span class="appt-required" aria-hidden="true">*</span></label>
+              <input type="time" id="appt-time" required>
             </div>
           </div>
           <div class="appt-field">
-            <label for="appt-provider">Provider Seen</label>
+            <label for="appt-provider">Provider</label>
             <input type="text" id="appt-provider" list="appt-provider-list" placeholder="e.g. Ashley Simela, DO" autocomplete="off">
             <datalist id="appt-provider-list"></datalist>
           </div>
@@ -238,7 +238,6 @@
             <label for="appt-notes">Additional Notes</label>
             <textarea id="appt-notes" rows="3" placeholder="Optional — anything the practice team should know"></textarea>
           </div>
-          <p class="appt-modal-note">Leave date &amp; time blank to send the template with placeholder text instead. When both are filled in, the email includes Add to Google/Outlook/Apple Calendar links.</p>
         </div>
         <div class="appt-modal-footer">
           <button type="button" class="appt-modal-cancel" id="appt-modal-cancel">Cancel</button>
