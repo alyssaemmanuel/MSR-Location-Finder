@@ -278,6 +278,7 @@
         {
           "name": "Cedarhurst (Doctor Only)",
           "practice": "Interventional Physical Medicine & Rehabilitation, PC",
+          "satelliteLocation": true,
           "manager": "Gary Klein",
           "address": "657 Central Avenue, Main Level",
           "city": "Cedarhurst",

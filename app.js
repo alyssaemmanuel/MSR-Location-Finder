@@ -956,7 +956,7 @@
                 <button type="button" class="office-select" data-index="${idx}">
                   <span class="result-number">${idx + 1}</span>
                   <div class="office-details">
-                    <span class="town-name">${office.name}</span>
+                    <span class="town-name">${office.name}${office.satelliteLocation ? ' <span class="satellite-badge">Satellite Location</span>' : ''}</span>
                     <span class="office-practice">${office.practice}</span>
                     <span class="office-address-text">${office.address}, ${office.city}, ${office.state} ${office.zip}</span>
                     ${isThirdPartyScheduling ? `<div class="scheduling-flag"><span aria-hidden="true">&#128681;</span> Scheduling is handled by the office directly &mdash; collect full name &amp; contact information and hand off to the Office Manager.</div>` : ''}
