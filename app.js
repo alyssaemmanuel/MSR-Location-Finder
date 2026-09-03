@@ -744,13 +744,14 @@
         lines.push(`Office Manager: ${office.manager || ''}`);
         lines.push(`Hours: ${office.hours || ''}`);
         lines.push(`Medical Records Email: ${office.medEmail || 'Not available'}`);
+        const escalationLabel = office.appointmentContactsBelow ? 'Appointment & Non-Appointment Requests' : 'Non-Appointment Requests';
         if (office.escalationContacts && office.escalationContacts.length) {
-          lines.push('Non-Appointment Requests:');
+          lines.push(`${escalationLabel}:`);
           office.escalationContacts.forEach(c => {
             lines.push(`  - ${c.name}${c.phone ? `: ${formatPhone(c.phone)}` : ''}${c.email ? ` / ${c.email}` : ''}`);
           });
         } else {
-          lines.push(`Non-Appointment Requests: ${office.escalation || ''}${office.escalationPhone ? ` - ${formatPhone(office.escalationPhone)}` : ''}`);
+          lines.push(`${escalationLabel}: ${office.escalation || ''}${office.escalationPhone ? ` - ${formatPhone(office.escalationPhone)}` : ''}`);
         }
         lines.push(`Insurances Accepted: ${(office.insurances || []).join(', ') || 'None listed'}`);
         lines.push(`Providers: ${(office.providers || []).join(', ') || 'None listed'}`);
@@ -972,7 +973,7 @@
                           `}
                         </div>
                         <div class="split-row">
-                          <b>Non-Appointment Requests:</b><br>
+                          <b>${office.appointmentContactsBelow ? 'Appointment &amp; Non-Appointment Requests:' : 'Non-Appointment Requests:'}</b><br>
                           ${renderEscalation(office)}
                         </div>
                       </div>
