@@ -286,6 +286,7 @@
         'Valley Stream': 'Steven Ross, DO',
         'Rego Park': 'Gautam Khakhar, MD',
         'North Bergen': 'Seth Schran, MD',
+        'Westbury': 'Ashley Simela, DO',
       };
 
       const providerTagRenderer = (officeName) => (entry) => {
