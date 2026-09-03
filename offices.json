@@ -145,6 +145,7 @@
           "region": "Brooklyn",
           "zip": "11207",
           "phone": "718.701.6099",
+          "appointmentContactsBelow": true,
           "medEmail": "canarsie@msrmedrecords.com",
           "escalation": "Johanna Torres",
           "escalationPhone": "718.701.6099",

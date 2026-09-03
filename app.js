@@ -963,9 +963,13 @@
                       <div class="split-col">
                         <span class="split-col-title">CONTACT INFORMATION</span>
                         <div class="split-row">
-                          <b>For help with appointment requests call main line:</b><br>
-                          <a href="tel:${office.phone.replace(/\D/g, '')}">${phoneClean}</a>
-                          ${office.directPhone ? `<br><a href="tel:${office.directPhone.replace(/\D/g, '')}">${directClean}</a>` : ''}
+                          ${office.appointmentContactsBelow ? `
+                            <b>For help with appointment requests call contacts listed below:</b>
+                          ` : `
+                            <b>For help with appointment requests call main line:</b><br>
+                            <a href="tel:${office.phone.replace(/\D/g, '')}">${phoneClean}</a>
+                            ${office.directPhone ? `<br><a href="tel:${office.directPhone.replace(/\D/g, '')}">${directClean}</a>` : ''}
+                          `}
                         </div>
                         <div class="split-row">
                           <b>Non-Appointment Requests:</b><br>
