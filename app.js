@@ -403,6 +403,102 @@
         }
       }
 
+      const APPT_DURATION_MINUTES = 30;
+      const pad2 = (n) => String(n).padStart(2, '0');
+
+      function formatApptDate(dateStr) {
+        if (!dateStr) return '';
+        const [y, m, d] = dateStr.split('-').map(Number);
+        return new Date(y, m - 1, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      }
+
+      function formatApptTime(timeStr) {
+        if (!timeStr) return '';
+        const [h, m] = timeStr.split(':').map(Number);
+        const dt = new Date();
+        dt.setHours(h, m, 0, 0);
+        return dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      }
+
+      function apptDateTimeRange(appt) {
+        const [y, m, d] = appt.date.split('-').map(Number);
+        const [h, min] = appt.time.split(':').map(Number);
+        const start = new Date(y, m - 1, d, h, min, 0);
+        const end = new Date(start.getTime() + APPT_DURATION_MINUTES * 60000);
+        return { start, end };
+      }
+
+      const icsLocalStamp = (dt) => `${dt.getFullYear()}${pad2(dt.getMonth() + 1)}${pad2(dt.getDate())}T${pad2(dt.getHours())}${pad2(dt.getMinutes())}00`;
+      const icsUtcStamp = (dt) => `${dt.getUTCFullYear()}${pad2(dt.getUTCMonth() + 1)}${pad2(dt.getUTCDate())}T${pad2(dt.getUTCHours())}${pad2(dt.getUTCMinutes())}${pad2(dt.getUTCSeconds())}Z`;
+      const icsEscape = (str) => String(str || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+
+      function apptEventDetails(office, appt) {
+        return [
+          `Practice: ${office.practice}`,
+          appt.provider ? `Provider: ${appt.provider}` : '',
+          appt.notes ? `Notes: ${appt.notes}` : ''
+        ].filter(Boolean).join('\n');
+      }
+
+      function apptEventTitle(office, appt) {
+        return appt.provider ? `Appointment with ${appt.provider} — ${office.practice}` : `Appointment — ${office.practice}`;
+      }
+
+      function buildGoogleCalLink(office, appt) {
+        const { start, end } = apptDateTimeRange(appt);
+        const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
+        const params = new URLSearchParams({
+          action: 'TEMPLATE',
+          text: apptEventTitle(office, appt),
+          dates: `${icsLocalStamp(start)}/${icsLocalStamp(end)}`,
+          details: apptEventDetails(office, appt),
+          location: fullAddress,
+          ctz: 'America/New_York'
+        });
+        return `https://calendar.google.com/calendar/render?${params.toString()}`;
+      }
+
+      function buildOutlookCalLink(office, appt) {
+        const { start, end } = apptDateTimeRange(appt);
+        const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
+        const params = new URLSearchParams({
+          path: '/calendar/action/compose',
+          rru: 'addevent',
+          subject: apptEventTitle(office, appt),
+          startdt: start.toISOString(),
+          enddt: end.toISOString(),
+          location: fullAddress,
+          body: apptEventDetails(office, appt)
+        });
+        return `https://outlook.office.com/calendar/0/deeplink/compose?${params.toString()}`;
+      }
+
+      function buildIcsContent(office, appt) {
+        const { start, end } = apptDateTimeRange(appt);
+        const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
+        const uid = `${Date.now()}-${Math.random().toString(36).slice(2)}@msr-location-finder`;
+        return [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//MSR Location Finder//Appointment//EN',
+          'CALSCALE:GREGORIAN',
+          'BEGIN:VEVENT',
+          `UID:${uid}`,
+          `DTSTAMP:${icsUtcStamp(new Date())}`,
+          `DTSTART;TZID=America/New_York:${icsLocalStamp(start)}`,
+          `DTEND;TZID=America/New_York:${icsLocalStamp(end)}`,
+          `SUMMARY:${icsEscape(apptEventTitle(office, appt))}`,
+          `LOCATION:${icsEscape(fullAddress)}`,
+          `DESCRIPTION:${icsEscape(apptEventDetails(office, appt))}`,
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+      }
+
+      function buildAppleCalLink(office, appt) {
+        return `data:text/calendar;charset=utf-8,${encodeURIComponent(buildIcsContent(office, appt))}`;
+      }
+
       function toBold(str) {
         return Array.from(str).map(char => {
           const code = char.charCodeAt(0);
@@ -413,18 +509,30 @@
         }).join('');
       }
 
-      function buildPlainTextConfirmation(office) {
+      function buildPlainTextConfirmation(office, appt = {}) {
         const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
         const gmbLink = office.gmbUrl || gmbUrl(office);
+        const dateDisplay = appt.date ? formatApptDate(appt.date) : '[Day, Date]';
+        const timeDisplay = appt.time ? formatApptTime(appt.time) : '[Time]';
+        const hasSchedule = Boolean(appt.date && appt.time);
+
+        const calendarLinksText = hasSchedule ?
+          `Add to Google Calendar: ${buildGoogleCalLink(office, appt)}\r\n` +
+          `Add to Outlook Calendar: ${buildOutlookCalLink(office, appt)}\r\n` +
+          `Add to Apple Calendar: ${buildAppleCalLink(office, appt)}\r\n\r\n`
+          : '';
 
         return `Hello,\r\n\r\n` +
           `We’re happy to confirm the appointment below:\r\n\r\n` +
           `${toBold("Patient:")} [Patient Full Name]\r\n` +
-          `${toBold("Appointment Date:")} [Day, Date]\r\n` +
-          `${toBold("Appointment Time:")} [Time]\r\n` +
+          `${toBold("Appointment Date:")} ${dateDisplay}\r\n` +
+          `${toBold("Appointment Time:")} ${timeDisplay}\r\n` +
+          (appt.provider ? `${toBold("Provider Seen:")} ${appt.provider}\r\n` : '') +
           `${toBold("Practice:")} ${office.practice}\r\n` +
           `${toBold("Address:")} ${fullAddress}\r\n` +
           `${gmbLink}\r\n\r\n` +
+          calendarLinksText +
+          (appt.notes ? `${toBold("Additional Notes:")} ${appt.notes}\r\n\r\n` : '') +
           `${toBold("For the Patient")}\r\n` +
           `Your appointment is confirmed! We look forward to welcoming you.\r\n\r\n` +
           `Please remember to bring your ${toBold("photo ID")}, along with any documents you have available related to your injury, including:\r\n\r\n` +
@@ -442,20 +550,34 @@
           `${toBold("Patient Access Team")}`;
       }
 
-      function buildHtmlConfirmation(office) {
+      function buildHtmlConfirmation(office, appt = {}) {
         const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
         const gmbLink = office.gmbUrl || gmbUrl(office);
+        const dateDisplay = appt.date ? formatApptDate(appt.date) : '[Day, Date]';
+        const timeDisplay = appt.time ? formatApptTime(appt.time) : '[Time]';
+        const hasSchedule = Boolean(appt.date && appt.time);
+        const calBtnStyle = 'display:inline-block;margin:0 8px 8px 0;padding:8px 14px;background:#0179bf;color:#ffffff;text-decoration:none;border-radius:4px;font-weight:600;font-size:10.5pt;';
+
+        const calendarLinksHtml = hasSchedule ? `
+          <p style="margin: 4px 0 18px;">
+            <a href="${buildGoogleCalLink(office, appt)}" target="_blank" style="${calBtnStyle}">Add to Google Calendar</a>
+            <a href="${buildOutlookCalLink(office, appt)}" target="_blank" style="${calBtnStyle}">Add to Outlook Calendar</a>
+            <a href="${buildAppleCalLink(office, appt)}" target="_blank" style="${calBtnStyle}">Add to Apple Calendar</a>
+          </p>` : '';
 
         return `<div style="font-family: Calibri, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #000000;">` +
           `<p style="margin: 0 0 14px;">Hello,</p>` +
           `<p style="margin: 0 0 14px;">We’re happy to confirm the appointment below:</p>` +
           `<p style="margin: 0 0 16px; line-height: 1.6;">` +
             `<strong>Patient:</strong> [Patient Full Name]<br>` +
-            `<strong>Appointment Date:</strong> [Day, Date]<br>` +
-            `<strong>Appointment Time:</strong> [Time]<br>` +
+            `<strong>Appointment Date:</strong> ${dateDisplay}<br>` +
+            `<strong>Appointment Time:</strong> ${timeDisplay}<br>` +
+            (appt.provider ? `<strong>Provider Seen:</strong> ${appt.provider}<br>` : '') +
             `<strong>Practice:</strong> ${office.practice}<br>` +
             `<strong>Address:</strong> <a href="${gmbLink}" target="_blank" style="color: #0179bf; text-decoration: underline; font-weight: 600;">${fullAddress}</a>` +
           `</p>` +
+          calendarLinksHtml +
+          (appt.notes ? `<p style="margin: 0 0 16px;"><strong>Additional Notes:</strong> ${appt.notes}</p>` : '') +
           `<p style="margin: 0 0 4px;"><strong>For the Patient</strong></p>` +
           `<p style="margin: 0 0 14px;">Your appointment is confirmed! We look forward to welcoming you.</p>` +
           `<p style="margin: 0 0 8px;">Please remember to bring your <strong>photo ID</strong>, along with any documents you have available related to your injury, including:</p>` +
@@ -496,11 +618,11 @@
         }
       }
 
-      function directLaunchAppointmentEmail(office) {
+      function directLaunchAppointmentEmail(office, appt = {}) {
         if (!office) return;
         const subject = `Your Appointment Confirmation Details | ${office.practice}`;
-        const plainText = buildPlainTextConfirmation(office);
-        const htmlText = buildHtmlConfirmation(office);
+        const plainText = buildPlainTextConfirmation(office, appt);
+        const htmlText = buildHtmlConfirmation(office, appt);
         
         // 1. Copy rich HTML to clipboard so user can also Ctrl+V anywhere
         copyRichAndPlainText(htmlText, plainText);
@@ -760,8 +882,58 @@
         }
       }
 
+      // Appointment Confirmation Modal
+      const apptModalBackdrop = document.querySelector('#appt-modal-backdrop');
+      const apptModalOfficeLabel = document.querySelector('#appt-modal-office');
+      const apptDateInput = document.querySelector('#appt-date');
+      const apptTimeInput = document.querySelector('#appt-time');
+      const apptProviderInput = document.querySelector('#appt-provider');
+      const apptProviderList = document.querySelector('#appt-provider-list');
+      const apptNotesInput = document.querySelector('#appt-notes');
+      let pendingApptOffice = null;
+
+      function openApptModal(office) {
+        if (!office) return;
+        pendingApptOffice = office;
+        apptModalOfficeLabel.textContent = `${office.name} — ${office.practice}`;
+        apptDateInput.value = '';
+        apptTimeInput.value = '';
+        apptProviderInput.value = '';
+        apptNotesInput.value = '';
+        apptProviderList.innerHTML = (office.providers || [])
+          .map(p => `<option value="${providerNameOnly(p)}"></option>`).join('');
+        apptModalBackdrop.hidden = false;
+        setTimeout(() => apptDateInput.focus(), 0);
+      }
+
+      function closeApptModal() {
+        apptModalBackdrop.hidden = true;
+        pendingApptOffice = null;
+      }
+
+      document.querySelector('#appt-modal-close').addEventListener('click', closeApptModal);
+      document.querySelector('#appt-modal-cancel').addEventListener('click', closeApptModal);
+      apptModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === apptModalBackdrop) closeApptModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !apptModalBackdrop.hidden) closeApptModal();
+      });
+      document.querySelector('#appt-modal-generate').addEventListener('click', () => {
+        if (!pendingApptOffice) return;
+        const appt = {
+          date: apptDateInput.value,
+          time: apptTimeInput.value,
+          provider: apptProviderInput.value.trim(),
+          notes: apptNotesInput.value.trim()
+        };
+        const office = pendingApptOffice;
+        closeApptModal();
+        directLaunchAppointmentEmail(office, appt);
+      });
+
       document.querySelector('#map-confirm-btn').addEventListener('click', () => {
-        if (activeOffice) directLaunchAppointmentEmail(activeOffice);
+        if (activeOffice) openApptModal(activeOffice);
       });
 
       showAllBtn.addEventListener('click', () => {
@@ -774,7 +946,7 @@
         if (confirmBtn) {
           const idx = Number(confirmBtn.dataset.index);
           const office = results[idx];
-          if (office) directLaunchAppointmentEmail(office);
+          if (office) openApptModal(office);
           return;
         }
 

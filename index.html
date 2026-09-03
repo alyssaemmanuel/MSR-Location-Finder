@@ -60,16 +60,16 @@
             </div>
           </div>
           <h1>MSR Patient <em>Access Department</em></h1>
-          <p>Search by ZIP code or street address to calculate proximity mileage, or navigate regional clinical hubs below to route appointments with direct office managers, hours, and medical records contacts.</p>
-          
-          <form class="zip-search" id="zip-form" aria-label="Find an office by ZIP code or street address">
+          <p>Search by ZIP code, street address, or town to calculate proximity mileage, or navigate regional clinical hubs below to route appointments with direct office managers, hours, and medical records contacts.</p>
+
+          <form class="zip-search" id="zip-form" aria-label="Find an office by ZIP code, street address, or town">
             <div class="zip-search-console">
               <div class="search-input-wrap">
                 <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input id="zip" name="zip" autocomplete="street-address" maxlength="180" value="" placeholder="e.g. 10016 or 265 Madison Ave, New York, NY" aria-label="Search by ZIP code or street address">
+                <input id="zip" name="zip" autocomplete="street-address" maxlength="180" value="" placeholder="e.g. 10016, 265 Madison Ave, or Brooklyn, NY" aria-label="Search by ZIP code, street address, or town">
               </div>
               <button type="submit">Find offices &rarr;</button>
             </div>
@@ -140,6 +140,12 @@
 
       <!-- Segmented State & Regional Filters -->
       <div class="nav-tab-filters" id="nav-tab-filters" aria-label="Filter locations by state and region">
+        <div class="filters-panel-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+          </svg>
+          Filters
+        </div>
         <div class="filter-group-row">
           <span class="filter-group-label">State:</span>
           <div class="filter-tab-items" id="state-filter-tabs">
@@ -199,6 +205,46 @@
     <!-- Toast Notification for Launching Outlook -->
     <div class="toast-notify" id="toast-notify" role="alert" aria-live="assertive">
       <span id="toast-message">Opening Outlook...</span>
+    </div>
+
+    <!-- Appointment Confirmation Modal -->
+    <div class="appt-modal-backdrop" id="appt-modal-backdrop" hidden>
+      <div class="appt-modal" role="dialog" aria-modal="true" aria-labelledby="appt-modal-title">
+        <div class="appt-modal-header">
+          <div>
+            <span class="appt-modal-kicker">Appointment Confirmation</span>
+            <h3 id="appt-modal-title">Enter Appointment Details</h3>
+          </div>
+          <button type="button" class="appt-modal-close" id="appt-modal-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="appt-modal-body">
+          <div class="appt-modal-office" id="appt-modal-office"></div>
+          <div class="appt-field-row">
+            <div class="appt-field">
+              <label for="appt-date">Appointment Date</label>
+              <input type="date" id="appt-date">
+            </div>
+            <div class="appt-field">
+              <label for="appt-time">Appointment Time</label>
+              <input type="time" id="appt-time">
+            </div>
+          </div>
+          <div class="appt-field">
+            <label for="appt-provider">Provider Seen</label>
+            <input type="text" id="appt-provider" list="appt-provider-list" placeholder="e.g. Ashley Simela, DO" autocomplete="off">
+            <datalist id="appt-provider-list"></datalist>
+          </div>
+          <div class="appt-field">
+            <label for="appt-notes">Additional Notes</label>
+            <textarea id="appt-notes" rows="3" placeholder="Optional — anything the practice team should know"></textarea>
+          </div>
+          <p class="appt-modal-note">Leave date &amp; time blank to send the template with placeholder text instead. When both are filled in, the email includes Add to Google/Outlook/Apple Calendar links.</p>
+        </div>
+        <div class="appt-modal-footer">
+          <button type="button" class="appt-modal-cancel" id="appt-modal-cancel">Cancel</button>
+          <button type="button" class="appt-modal-generate" id="appt-modal-generate">Generate Email <span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </div>
     </div>
 
     <footer>
