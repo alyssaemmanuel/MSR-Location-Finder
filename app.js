@@ -494,8 +494,7 @@
       function apptEventDetails(office, appt) {
         return [
           `Practice: ${office.practice}`,
-          appt.provider ? `Provider: ${appt.provider}` : '',
-          appt.notes ? `Notes: ${appt.notes}` : ''
+          appt.provider ? `Provider: ${appt.provider}` : ''
         ].filter(Boolean).join('\n');
       }
 
@@ -568,9 +567,6 @@
         }).join('');
       }
 
-      const nl2br = (str) => String(str || '').replace(/\r\n|\r|\n/g, '<br>');
-      const normalizeCrlf = (str) => String(str || '').replace(/\r\n|\r|\n/g, '\r\n');
-
       function buildPlainTextConfirmation(office, appt = {}) {
         const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
         const gmbLink = office.gmbUrl || gmbUrl(office);
@@ -594,7 +590,6 @@
           `${toBold("Address:")} ${fullAddress}\r\n` +
           `${gmbLink}\r\n\r\n` +
           calendarLinksText +
-          (appt.notes ? `${toBold("Additional Notes:")} ${normalizeCrlf(appt.notes)}\r\n\r\n` : '') +
           `${toBold("For the Patient")}\r\n` +
           `Your appointment is confirmed! We look forward to welcoming you.\r\n\r\n` +
           `Please remember to bring your ${toBold("photo ID")}, along with any documents you have available related to your injury, including:\r\n\r\n` +
@@ -641,7 +636,6 @@
             `<strong>Address:</strong> <a href="${gmbLink}" target="_blank" style="color: #0179bf; text-decoration: underline; font-weight: 600;">${fullAddress}</a>` +
           `</p>` +
           calendarLinksHtml +
-          (appt.notes ? `<p style="margin: 0 0 16px;"><strong>Additional Notes:</strong> ${nl2br(appt.notes)}</p>` : '') +
           `<p style="margin: 0 0 4px;"><strong>For the Patient</strong></p>` +
           `<p style="margin: 0 0 14px;">Your appointment is confirmed! We look forward to welcoming you.</p>` +
           `<p style="margin: 0 0 8px;">Please remember to bring your <strong>photo ID</strong>, along with any documents you have available related to your injury, including:</p>` +
@@ -732,6 +726,54 @@
           'Once verification is complete, please Reply All to confirm and include any relevant verification details or notes. In your reply, please be sure to return the updated intake sheet.',
           'Thank you for your help!'
         ].join('\r\n\r\n');
+
+        showToast('Opening Outlook...');
+        window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+
+      function buildOfficeSummaryText(office) {
+        const fullAddress = `${office.address}, ${office.city}, ${office.state} ${office.zip}`;
+        const lines = [
+          `Location Name: ${office.name}`,
+          `Practice: ${office.practice}`,
+          `Address: ${fullAddress}`,
+          `Main Phone: ${office.phone || ''}`,
+        ];
+        if (office.directPhone) lines.push(`Direct Phone: ${office.directPhone}`);
+        if (office.generalPhone) lines.push(`General Inquiries Phone: ${office.generalPhone}`);
+        lines.push(`Office Manager: ${office.manager || ''}`);
+        lines.push(`Hours: ${office.hours || ''}`);
+        lines.push(`Medical Records Email: ${office.medEmail || 'Not available'}`);
+        if (office.escalationContacts && office.escalationContacts.length) {
+          lines.push('Non-Appointment Requests:');
+          office.escalationContacts.forEach(c => {
+            lines.push(`  - ${c.name}${c.phone ? `: ${formatPhone(c.phone)}` : ''}${c.email ? ` / ${c.email}` : ''}`);
+          });
+        } else {
+          lines.push(`Non-Appointment Requests: ${office.escalation || ''}${office.escalationPhone ? ` - ${formatPhone(office.escalationPhone)}` : ''}`);
+        }
+        lines.push(`Insurances Accepted: ${(office.insurances || []).join(', ') || 'None listed'}`);
+        lines.push(`Providers: ${(office.providers || []).join(', ') || 'None listed'}`);
+        lines.push(`Services: ${(office.services || []).join(', ') || 'None listed'}`);
+        lines.push(`Location Page: ${office.url || ''}`);
+        return lines.join('\r\n');
+      }
+
+      function launchSuggestEditEmail(office) {
+        if (!office) return;
+        const to = 'mnunez@healthplusmgmt.com,memartinez@healthplusmgmt.com,aemmanuel@healthplusmgmt.com';
+        const subject = `Suggested Edit — ${office.name}`;
+        const body = [
+          `I have a suggestion for the ${office.name} location.`,
+          '',
+          'Suggested Edit:',
+          '[Enter your suggested edit here]',
+          '',
+          '----------------------------------------',
+          'Current Information on File',
+          '----------------------------------------',
+          buildOfficeSummaryText(office)
+        ].join('\r\n');
 
         showToast('Opening Outlook...');
         window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -957,6 +999,7 @@
                 <div class="office-actions">
                   <button type="button" class="btn-confirm-appt" data-index="${idx}">Appointment Confirmation <span aria-hidden="true">&nearr;</span></button>
                   <a class="btn-learn-more" href="${office.url}" target="_blank" rel="noreferrer">Learn More About Location <span aria-hidden="true">&nearr;</span></a>
+                  <button type="button" class="btn-confirm-appt btn-suggest-edit" data-index="${idx}">Suggest an Edit <span aria-hidden="true">&nearr;</span></button>
                 </div>
               </li>
             `;
@@ -979,7 +1022,6 @@
       const apptTimeInput = document.querySelector('#appt-time');
       const apptProviderInput = document.querySelector('#appt-provider');
       const apptProviderList = document.querySelector('#appt-provider-list');
-      const apptNotesInput = document.querySelector('#appt-notes');
       let pendingApptOffice = null;
 
       function openApptModal(office) {
@@ -989,7 +1031,6 @@
         apptDateInput.value = '';
         apptTimeInput.value = '';
         apptProviderInput.value = '';
-        apptNotesInput.value = '';
         apptProviderList.innerHTML = (office.providers || [])
           .map(p => `<option value="${providerNameOnly(p)}"></option>`).join('');
         apptModalBackdrop.hidden = false;
@@ -1015,8 +1056,7 @@
         const appt = {
           date: apptDateInput.value,
           time: apptTimeInput.value,
-          provider: apptProviderInput.value.trim(),
-          notes: apptNotesInput.value.trim()
+          provider: apptProviderInput.value.trim()
         };
         const office = pendingApptOffice;
         closeApptModal();
@@ -1029,12 +1069,24 @@
 
       document.querySelector('#email-verifier-btn').addEventListener('click', launchEmailVerifierEmail);
 
+      document.querySelector('#map-suggest-edit-btn').addEventListener('click', () => {
+        if (activeOffice) launchSuggestEditEmail(activeOffice);
+      });
+
       showAllBtn.addEventListener('click', () => {
         isShowAll = !isShowAll;
         render(currentOrigin, currentSearch, true);
       });
 
       list.addEventListener('click', (event) => {
+        const suggestEditBtn = event.target.closest('.btn-suggest-edit');
+        if (suggestEditBtn) {
+          const idx = Number(suggestEditBtn.dataset.index);
+          const office = results[idx];
+          if (office) launchSuggestEditEmail(office);
+          return;
+        }
+
         const confirmBtn = event.target.closest('.btn-confirm-appt');
         if (confirmBtn) {
           const idx = Number(confirmBtn.dataset.index);
