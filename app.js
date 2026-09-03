@@ -1134,6 +1134,7 @@
       });
 
       document.querySelector('#email-verifier-btn').addEventListener('click', launchEmailVerifierEmail);
+      document.querySelector('#floating-email-verifier-btn').addEventListener('click', launchEmailVerifierEmail);
 
       showAllBtn.addEventListener('click', () => {
         isShowAll = !isShowAll;
