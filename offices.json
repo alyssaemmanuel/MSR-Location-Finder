@@ -105,7 +105,7 @@
           "url": "https://painandinjury.com/locations/spine-sports-interventional-pain-medicine-p-c-brooklyn-heights/",
           "lat": 40.69,
           "lon": -73.99,
-          "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Local 1199", "Medicare", "One Call", "UnitedHealthcare"],
+          "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Local 1199", "One Call", "UnitedHealthcare"],
           "providers": ["Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Sanjeev Agarwal, MD (Pain Management)"],
           "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
@@ -204,7 +204,7 @@
           "url": "https://painandinjury.com/locations/njs-physical-medicine-rehabilitation-p-c-flatbush/",
           "lat": 40.64,
           "lon": -73.96,
-          "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "HealthFirst", "Medicare", "UnitedHealthcare"],
+          "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "HealthFirst", "UnitedHealthcare"],
           "providers": ["Nunzio Saulle, MD (Physical Medicine & Rehabilitation)", "Chinweike Izeogu, MD (Pain Management)", "Mark Dedvukaj, MD (Physical Medicine & Rehabilitation)"],
           "services": ["PM&R", "Physical Therapy", "EMG/NCS"]
         },
@@ -312,7 +312,7 @@
           "url": "https://painandinjury.com/locations/sports-medicine-spine-rehabilitation-p-c-hempstead/",
           "lat": 40.71,
           "lon": -73.62,
-          "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Emblem Health", "Fidelis", "Medicare", "One Call", "UnitedHealthcare"],
+          "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Cigna", "Corvel", "Emblem Health", "Fidelis", "One Call", "UnitedHealthcare"],
           "providers": ["Ashley Simela, DO (Spine)", "Lauren Bartels Marzuillo, DO (Physical Medicine & Rehabilitation)", "Silvia Geraci, MD (Pain Management)"],
           "services": ["PM&R", "Interventional Pain Management", "Orthopedics", "Sports Medicine", "Physical Therapy", "EMG/NCS", "Injections / Procedures"],
           "escalationContacts": [
@@ -453,7 +453,7 @@
           "url": "https://painandinjury.com/locations/premier-east-physical-medicine-rehabilitation-p-c-medford/",
           "lat": 40.82,
           "lon": -72.99,
-          "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Emblem Health", "Medicare", "One Call", "UnitedHealthcare"],
+          "insurances": ["Aetna", "Anthem BCBS", "Carisk Partners", "Corvel", "Emblem Health", "One Call", "UnitedHealthcare"],
           "providers": ["Steven Ross, DO (Physical Medicine & Rehabilitation)", "Craig Shalmi, MD (Pain Management)", "George Resnick, DC (Chiropractic)", "Lisa Daley-Clark, MD (Physical Medicine & Rehabilitation)"],
           "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
@@ -543,7 +543,7 @@
           "url": "https://painandinjury.com/locations/pappas-physical-medicine-rehabilitation-pllc-astoria/",
           "lat": 40.76,
           "lon": -73.93,
-          "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "Fidelis", "HealthFirst", "Local 1199", "Medicaid", "Medicare", "MetroPlus Health", "UnitedHealthcare"],
+          "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "Fidelis", "HealthFirst", "Local 1199", "Medicaid", "MetroPlus Health", "UnitedHealthcare"],
           "providers": ["Mike Pappas, DO (Physical Medicine & Rehabilitation)", "Chinweike Izeogu, MD (Pain Management)", "Michael Jurkowich, MD (Physical Medicine & Rehabilitation)", "Nicolas El-Khoury, MD (Physical Medicine & Rehabilitation)", "Ornela Rehova, MD (Physical Medicine & Rehabilitation)", "Sekhar Upadhyayula, MD (Pain Management)"],
           "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS"]
         },
@@ -633,7 +633,7 @@
           "url": "https://painandinjury.com/locations/lower-hudson-medical-associates-p-c-white-plains/",
           "lat": 41.02,
           "lon": -73.76,
-          "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "Fidelis", "Medicare", "MVP Health Care", "Railroad Medicare", "UnitedHealthcare"],
+          "insurances": ["Aetna", "Anthem BCBS", "Cigna", "Emblem Health", "Fidelis", "MVP Health Care", "UnitedHealthcare"],
           "providers": ["Christopher Lee, MD (Pain Management)", "Dina Nelson, MD (Physical Medicine & Rehabilitation)"],
           "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "EMG/NCS", "Injections / Procedures"]
         },
@@ -732,7 +732,7 @@
           "url": "https://painandinjury.com/locations/synergy-spinecare-rehabilitation-medicine-p-c-north-bergen/",
           "lat": 40.79,
           "lon": -74.03,
-          "insurances": ["Aetna", "Amerihealth", "Cigna", "Medicare", "UnitedHealthcare"],
+          "insurances": ["Aetna", "Amerihealth", "Cigna", "UnitedHealthcare"],
           "providers": ["Ashley Simela, DO (Spine)", "Seth Schran, MD (Physical Medicine & Rehabilitation)"],
           "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "Acupuncture", "EMG/NCS", "Injections / Procedures"],
           "escalationContacts": [
@@ -758,7 +758,7 @@
           "url": "https://painandinjury.com/locations/synergy-spinecare-rehabilitation-medicine-p-c-teacneck/",
           "lat": 40.89,
           "lon": -74.01,
-          "insurances": ["Aetna", "Amerihealth", "Cigna", "Medicare", "UnitedHealthcare"],
+          "insurances": ["Aetna", "Amerihealth", "Cigna", "UnitedHealthcare"],
           "providers": ["Seth Schran, MD (Physical Medicine & Rehabilitation)", "Fatma Minhas-Kucuk, AC (Acupuncturist)"],
           "services": ["PM&R", "Interventional Pain Management", "Physical Therapy", "Acupuncture", "EMG/NCS", "Injections / Procedures"]
         },
@@ -896,7 +896,7 @@
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-amherst/",
           "lat": 42.98,
           "lon": -78.80,
-          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Medicare", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "Railroad Medicare", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
+          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
         },
         {
           "name": "Buffalo",
@@ -917,7 +917,7 @@
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-buffalo/",
           "lat": 42.91,
           "lon": -78.87,
-          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Medicare", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "Railroad Medicare", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
+          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
         },
         {
           "name": "Lockport",
@@ -938,7 +938,7 @@
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-lockport/",
           "lat": 43.17,
           "lon": -78.69,
-          "insurances": ["Aetna", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Medicare", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "Railroad Medicare", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
+          "insurances": ["Aetna", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
         },
         {
           "name": "Niagara Falls",
@@ -959,7 +959,7 @@
           "url": "https://painandinjury.com/locations/dhd-medical-pc-midtown-manhattan-niagara-falls/",
           "lat": 43.10,
           "lon": -79.06,
-          "insurances": ["Aetna", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Medicare", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "Railroad Medicare", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
+          "insurances": ["Aetna", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
         },
         {
           "name": "Orchard Park",
@@ -980,7 +980,7 @@
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-orchard-park/",
           "lat": 42.76,
           "lon": -78.75,
-          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Medicare", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "Railroad Medicare", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
+          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
         },
         {
           "name": "Wheatfield",
@@ -1001,7 +1001,7 @@
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-wheatfield/",
           "lat": 43.09,
           "lon": -78.88,
-          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Medicare", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "Railroad Medicare", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
+          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
         },
         {
           "name": "Williamsville (Limestone Dr.)",
@@ -1022,7 +1022,7 @@
           "url": "https://painandinjury.com/locations/williamsville-physical-therapy-injury-care/",
           "lat": 42.98,
           "lon": -78.73,
-          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Medicare", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "Railroad Medicare", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
+          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
         },
         {
           "name": "Williamsville (South Forest Rd.)",
@@ -1043,7 +1043,7 @@
           "url": "https://painandinjury.com/locations/advanced-care-physical-therapy-south-williamsville/",
           "lat": 42.96,
           "lon": -78.75,
-          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Medicare", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "Railroad Medicare", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
+          "insurances": ["Aetna", "American Specialty Health (ASH)", "Centers Plan for Healthy Living", "Fallon Health", "Fidelis", "Highmark BCBS", "Humana", "Independent Health", "Martins Point", "Medicaid", "Meritain Health", "Molina Healthcare", "Monroe Plan", "MVP Health Care", "Optum VA Community Care (VA CCN)", "TheraMatrix", "Tricare", "UnitedHealthcare", "Univera", "Wellcare", "Wellpoint"]
         },
         {
           "name": "West Seneca",
